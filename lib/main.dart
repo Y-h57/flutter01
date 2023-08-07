@@ -26,7 +26,12 @@ class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:AppBar(
+        title: Text('2023年',style: TextStyle(fontSize: 30),textAlign: TextAlign.right),
+      ),
+
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children:<Widget>[
           ElevatedButton(
             onPressed: (){
