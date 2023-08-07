@@ -27,7 +27,7 @@ class ListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title: Text('2023年',style: TextStyle(fontSize: 30),textAlign: TextAlign.right),
+        title: Text('2023年',style: TextStyle(fontSize: 30)),
       ),
 
       body: Column(
@@ -66,15 +66,49 @@ class InputPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: TextButton(
-          // ボタンをクリックした時の処理
-          onPressed: () {
-            // "pop"で前の画面に戻る
-            Navigator.of(context).pop();
-          },
-          child: Text('戻る'),
-        ),
+      body: ListView(
+        children: <Widget>[
+          Card(
+            child: ListTile(
+              title: Text('日付：'),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title: Text('項目：'),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title: Text('メモ：'),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title: Text('支出：'),
+            ),
+          ),
+          Row(
+            children: <Widget>[
+              TextButton(
+                onPressed: () {
+                  // "pop"で前の画面に戻る
+                  Navigator.of(context).pop();
+                },
+                child: Text('戻る'),
+              ),
+              TextButton(
+                onPressed: () {
+                  // "pop"で前の画面に戻る
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ]
+          )
+
+
+        ] ,
       ),
     );
   }
@@ -85,6 +119,9 @@ class GraphPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:AppBar(
+        title: Text('2023年',style: TextStyle(fontSize: 30)),
+      ),
       body: Center(
         child: TextButton(
           // ボタンをクリックした時の処理
