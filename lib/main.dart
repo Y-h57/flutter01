@@ -105,9 +105,7 @@ class InputPage extends StatelessWidget {
                 child: Text('OK'),
               ),
             ]
-          )
-
-
+          ),
         ] ,
       ),
     );
