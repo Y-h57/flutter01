@@ -6,6 +6,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,45 +28,54 @@ class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
-        title: Text('2023年',style: TextStyle(fontSize: 30)),
-      ),
-
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children:<Widget>[
-            ElevatedButton(
-              onPressed: (){
-                // "push"で新規画面に遷移
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) {
-                    // 入力・編集画面を指定
-                    return InputPage();
-                  }),
-                );
-              },
-              child: Text('入力'),
-            ),
-            OutlinedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) {
-                    return GraphPage();
-                  }),
-                );
-              },
-              child: Text('グラフ表示画面'),
-            ),
-          ],
+        appBar:AppBar(
+          title: Text('2023年',style: TextStyle(fontSize: 30)),
         ),
-      )
+
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children:<Widget>[
+              ElevatedButton(
+                onPressed: (){
+                  // "push"で新規画面に遷移
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      // 入力・編集画面を指定
+                      return InputPage();
+                    }),
+                  );
+                },
+                child: Text('入力'),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      return GraphPage();
+                    }),
+                  );
+                },
+                child: Text('グラフ表示画面'),
+              ),
+            ],
+          ),
+        )
     );
   }
 }
 
 // 入力・編集画面用Widget
-class InputPage extends StatelessWidget {
+class InputPage extends StatefulWidget {
+  const InputPage({Key? key}) : super(key: key);
+
+  @override
+  State<InputPage> createState() => _InputPageState();
+}
+
+class _InputPageState extends State<InputPage> {
+  String? isSelectedItem = 'お菓子';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,11 +86,44 @@ class InputPage extends StatelessWidget {
               title: Text('日付：'),
             ),
           ),
+
           Card(
-            child: ListTile(
-              title: Text('項目：'),
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('項目：'),
+                  ),
+                ),
+
+                DropdownButton(
+                  items: const [
+
+                    DropdownMenuItem(
+                      child: Text('お菓子'),
+                      value: 'お菓子',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('ジュース'),
+                      value: 'ジュース',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('お弁当'),
+                      value: 'お弁当',
+                    ),
+                  ],
+                  onChanged: (String? value) {
+                    setState(() {
+                      isSelectedItem = value;
+                    });
+                  },
+                  value: isSelectedItem,
+                ),
+              ],
             ),
           ),
+
           Card(
             child: ListTile(
               title: Text('メモ：'),
@@ -90,23 +134,24 @@ class InputPage extends StatelessWidget {
               title: Text('支出：'),
             ),
           ),
+
           Row(
-            children: <Widget>[
-              TextButton(
-                onPressed: () {
-                  // "pop"で前の画面に戻る
-                  Navigator.of(context).pop();
-                },
-                child: Text('戻る'),
-              ),
-              TextButton(
-                onPressed: () {
-                  // "pop"で前の画面に戻る
-                  Navigator.of(context).pop();
-                },
-                child: Text('OK'),
-              ),
-            ]
+              children: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    // "pop"で前の画面に戻る
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('戻る'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // "pop"で前の画面に戻る
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'),
+                ),
+              ]
           ),
         ] ,
       ),
