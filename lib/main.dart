@@ -39,13 +39,31 @@ class ListPage extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: Container(
-                      child: Text('設定額：',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                      child: Row(
+                        children: <Widget>[
+                          Text('設定額：',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                          SizedBox(
+                            width: 150,
+                            child: TextField(),
+                          ),
+                          Text('円',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
                     ),
                   ),
 
                   Expanded(
                     child: Container(
-                      child: Text('今月：',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                      child: Row(
+                        children: <Widget>[
+                          Text('今月：',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                          SizedBox(
+                            width: 150,
+                            child: TextField(),
+                          ),
+                          Text('円',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -109,6 +127,7 @@ class _InputPageState extends State<InputPage> {
                   width: 500,
                   child: TextField(),
                 ),
+                Text('日'),
               ],
             ),
           ),
@@ -180,6 +199,7 @@ class _InputPageState extends State<InputPage> {
                   width: 500,
                   child: TextField(),
                 ),
+                Text('円'),
               ],
             ),
           ),
