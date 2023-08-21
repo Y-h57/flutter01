@@ -82,10 +82,22 @@ class _InputPageState extends State<InputPage> {
       body: ListView(
         children: <Widget>[
           Card(
-            child: ListTile(
-              title: Text('日付：'),
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('日付：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 500,
+                  child: TextField(),
+                ),
+              ],
             ),
           ),
+
 
           Card(
             child: Row(
@@ -125,13 +137,36 @@ class _InputPageState extends State<InputPage> {
           ),
 
           Card(
-            child: ListTile(
-              title: Text('メモ：'),
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('メモ：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 500,
+                  child: TextField(),
+                ),
+              ],
             ),
           ),
+
           Card(
-            child: ListTile(
-              title: Text('支出：'),
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('支出：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 500,
+                  child: TextField(),
+                ),
+              ],
             ),
           ),
 
