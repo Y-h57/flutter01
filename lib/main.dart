@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -81,6 +83,7 @@ class ListPage extends StatelessWidget {
                 },
                 child: Text('入力'),
               ),
+
               OutlinedButton(
                 onPressed: () {
                   Navigator.of(context).push(
