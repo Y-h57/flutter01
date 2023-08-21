@@ -34,8 +34,23 @@ class ListPage extends StatelessWidget {
 
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children:<Widget>[
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      child: Text('設定額：',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+
+                  Expanded(
+                    child: Container(
+                      child: Text('今月：',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                ],
+              ),
+
               ElevatedButton(
                 onPressed: (){
                   // "push"で新規画面に遷移
@@ -97,7 +112,6 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-
 
           Card(
             child: Row(
