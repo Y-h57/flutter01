@@ -71,17 +71,20 @@ class ListPage extends StatelessWidget {
                 ],
               ),
 
-              ElevatedButton(
-                onPressed: (){
-                  // "push"で新規画面に遷移
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      // 入力・編集画面を指定
-                      return InputPage();
-                    }),
-                  );
-                },
-                child: Text('入力'),
+              Padding(
+                padding: EdgeInsets.all(250.0),
+                child: ElevatedButton(
+                  onPressed: (){
+                    // "push"で新規画面に遷移
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) {
+                        // 入力・編集画面を指定
+                        return InputPage();
+                      }),
+                    );
+                  },
+                  child: Text('入力'),
+                ),
               ),
 
               OutlinedButton(
