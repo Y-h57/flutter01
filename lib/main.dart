@@ -1,9 +1,22 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'config/config.dart';
 
-void main() {
-  // 最初に表示するWidget
+final configurations = Configurations();
+Future<void> main() async {
+  // Firebase初期化
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+        apiKey: configurations.apiKey,
+        authDomain: configurations.authDomain,
+        projectId: configurations.projectId,
+        storageBucket: configurations.storageBucket,
+        messagingSenderId: configurations.messagingSenderId,
+        appId: configurations.appId
+    ),
+  );
   runApp(MyApp());
 }
 
