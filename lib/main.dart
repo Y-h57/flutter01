@@ -169,12 +169,48 @@ class _InputPageState extends State<InputPage> {
                       value: 'お菓子',
                     ),
                     DropdownMenuItem(
-                      child: Text('ジュース'),
-                      value: 'ジュース',
+                      child: Text('飲み物'),
+                      value: '飲み物',
                     ),
                     DropdownMenuItem(
-                      child: Text('お弁当'),
-                      value: 'お弁当',
+                      child: Text('健康飲料'),
+                      value: '健康飲料',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('酒類'),
+                      value: '酒類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('お弁当・お惣菜'),
+                      value: 'お弁当・お惣菜',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('おにぎり'),
+                      value: 'おにぎり',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('パン'),
+                      value: 'パン',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('スイーツ・アイス'),
+                      value: 'スイーツ・アイス',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('ホットスナック'),
+                      value: 'ホットスナック',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('日用品'),
+                      value: '日用品',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('雑誌類'),
+                      value: '雑誌類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('その他'),
+                      value: 'その他',
                     ),
                   ],
                   onChanged: (String? value) {
