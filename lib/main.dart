@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'config/config.dart';
 
 final configurations = Configurations();
+
 Future<void> main() async {
   // Firebase初期化
   WidgetsFlutterBinding.ensureInitialized();
@@ -83,6 +85,7 @@ class ListPage extends StatelessWidget {
                   ),
                 ],
               ),
+
 
               Padding(
                 padding: EdgeInsets.all(250.0),
