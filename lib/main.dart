@@ -86,6 +86,44 @@ class ListPage extends StatelessWidget {
                 ],
               ),
 
+              Expanded(
+                // FutureBuilder
+                // 非同期処理の結果を元にWidgetを作れる
+                child: FutureBuilder<QuerySnapshot>(
+                  // 入力日時でソート
+                  future: FirebaseFirestore.instance
+                      .collection('input')
+                      .orderBy('date')
+                      .get(),
+                  builder: (context, snapshot) {
+                    // データが取得できた場合
+                    if (snapshot.hasData) {
+                      final List<DocumentSnapshot> documents = snapshot.data!.docs;
+                      // 取得した投稿メッセージ一覧を元にリスト表示
+                      return ListView(
+                        children: documents.map((document) {
+                          return GestureDetector(
+                            child: Card(
+                              child: Column(
+                                children: <Widget>[
+                                  Text(document['date']),
+                                  Text(document['category']),
+                                  Text(document['name']),
+                                  Text(document['value']),
+                                ],
+                              )
+                            ),
+                          );
+                        }).toList(),
+                      );
+                    }
+                    return Center(
+                      child: Text('読込中...'),
+                    );
+                  },
+                ),
+              ),
+
 
               Padding(
                 padding: EdgeInsets.all(250.0),
