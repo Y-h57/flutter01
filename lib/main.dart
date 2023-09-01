@@ -129,7 +129,10 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  String date = '';
   String? isSelectedItem = 'お菓子';
+  String name = '';
+  String amount = '';
 
   @override
   Widget build(BuildContext context) {
@@ -147,7 +150,13 @@ class _InputPageState extends State<InputPage> {
                 ),
                 SizedBox(
                   width: 500,
-                  child: TextField(),
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        date = value;
+                      });
+                    },
+                  ),
                 ),
                 Text('日'),
               ],
@@ -238,7 +247,13 @@ class _InputPageState extends State<InputPage> {
                 ),
                 SizedBox(
                   width: 500,
-                  child: TextField(),
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        name = value;
+                      });
+                    },
+                  ),
                 ),
               ],
             ),
@@ -255,7 +270,13 @@ class _InputPageState extends State<InputPage> {
                 ),
                 SizedBox(
                   width: 500,
-                  child: TextField(),
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        amount = value;
+                      });
+                    },
+                  ),
                 ),
                 Text('円'),
               ],
@@ -272,7 +293,19 @@ class _InputPageState extends State<InputPage> {
                   child: Text('戻る'),
                 ),
                 TextButton(
-                  onPressed: () {
+                  onPressed: () async {
+
+                    // 投稿メッセージ用ドキュメント作成
+                    await FirebaseFirestore.instance
+                        .collection('input') // コレクションID指定
+                        .doc() // ドキュメントID自動生成
+                        .set({
+                      'date': date,
+                      'category': isSelectedItem,
+                      'name': name,
+                      'value': amount
+                    });
+
                     // "pop"で前の画面に戻る
                     Navigator.of(context).pop();
                   },
