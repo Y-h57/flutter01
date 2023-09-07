@@ -104,14 +104,14 @@ class ListPage extends StatelessWidget {
                         children: documents.map((document) {
                           return GestureDetector(
                             child: Card(
-                              child: Column(
-                                children: <Widget>[
-                                  Text(document['date']),
-                                  Text(document['category']),
-                                  Text(document['name']),
-                                  Text(document['value']),
-                                ],
-                              )
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(document['date']),
+                                    Text(document['category']),
+                                    Text(document['name']),
+                                    Text(document['value']),
+                                  ],
+                                )
                             ),
                           );
                         }).toList(),
