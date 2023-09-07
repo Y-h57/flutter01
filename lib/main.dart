@@ -99,7 +99,7 @@ class ListPage extends StatelessWidget {
                     // データが取得できた場合
                     if (snapshot.hasData) {
                       final List<DocumentSnapshot> documents = snapshot.data!.docs;
-                      // 取得した投稿メッセージ一覧を元にリスト表示
+                      // 取得した入力情報を元にリスト表示
                       return ListView(
                         children: documents.map((document) {
                           return GestureDetector(
@@ -123,7 +123,6 @@ class ListPage extends StatelessWidget {
                   },
                 ),
               ),
-
 
               Padding(
                 padding: EdgeInsets.all(250.0),
