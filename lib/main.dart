@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -54,33 +53,29 @@ class ListPage extends StatelessWidget {
             children:<Widget>[
               Row(
                 children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      child: Row(
-                        children: <Widget>[
-                          Text('設定額：',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                          SizedBox(
-                            width: 150,
-                            child: TextField(),
-                          ),
-                          Text('円',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                        ],
-                      ),
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        Text('設定額：',style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          width: 100,
+                          child: TextField(),
+                        ),
+                        Text('円',style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                      ],
                     ),
                   ),
 
-                  Expanded(
-                    child: Container(
-                      child: Row(
-                        children: <Widget>[
-                          Text('今月：',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                          SizedBox(
-                            width: 150,
-                            child: TextField(),
-                          ),
-                          Text('円',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                        ],
-                      ),
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        Text('今月：',style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          width: 100,
+                          child: TextField(),
+                        ),
+                        Text('円',style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                      ],
                     ),
                   ),
                 ],
@@ -124,20 +119,17 @@ class ListPage extends StatelessWidget {
                 ),
               ),
 
-              Padding(
-                padding: EdgeInsets.all(250.0),
-                child: ElevatedButton(
-                  onPressed: (){
-                    // "push"で新規画面に遷移
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) {
-                        // 入力・編集画面を指定
-                        return InputPage();
-                      }),
-                    );
+              ElevatedButton(
+                onPressed: (){
+                  // "push"で新規画面に遷移
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      // 入力・編集画面を指定
+                      return InputPage();
+                    }),
+                  );
                   },
-                  child: Text('入力'),
-                ),
+                child: Text('入力'),
               ),
 
               OutlinedButton(
@@ -186,7 +178,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
                 SizedBox(
-                  width: 500,
+                  width: 150,
                   child: TextFormField(
                     onChanged: (String value) {
                       setState(() {
@@ -283,7 +275,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
                 SizedBox(
-                  width: 500,
+                  width: 150,
                   child: TextFormField(
                     onChanged: (String value) {
                       setState(() {
@@ -306,7 +298,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
                 SizedBox(
-                  width: 500,
+                  width: 150,
                   child: TextFormField(
                     onChanged: (String value) {
                       setState(() {
