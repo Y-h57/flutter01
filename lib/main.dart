@@ -84,12 +84,12 @@ class ListPage extends StatelessWidget {
               Expanded(
                 // FutureBuilder
                 // 非同期処理の結果を元にWidgetを作れる
-                child: FutureBuilder<QuerySnapshot>(
+                child: StreamBuilder<QuerySnapshot>(
                   // 入力日時でソート
-                  future: FirebaseFirestore.instance
+                  stream: FirebaseFirestore.instance
                       .collection('input')
                       .orderBy('date')
-                      .get(),
+                      .snapshots(),
                   builder: (context, snapshot) {
 
                     Map<String, dynamic> map = {'date': Timestamp.now()};
