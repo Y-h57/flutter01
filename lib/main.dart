@@ -91,6 +91,10 @@ class ListPage extends StatelessWidget {
                       .orderBy('date')
                       .get(),
                   builder: (context, snapshot) {
+
+                    Map<String, dynamic> map = {'date': Timestamp.now()};
+                    DateTime now = map['date'].toDate();
+
                     // データが取得できた場合
                     if (snapshot.hasData) {
                       final List<DocumentSnapshot> documents = snapshot.data!.docs;
@@ -101,7 +105,7 @@ class ListPage extends StatelessWidget {
                             child: Card(
                                 child: Column(
                                   children: <Widget>[
-                                    Text(document['date']),
+                                    Text(now.day.toString()),
                                     Text(document['category']),
                                     Text(document['name']),
                                     Text(document['value']),
@@ -158,7 +162,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  String date = '';
+  DateTime now = DateTime.now();
+
   String? isSelectedItem = 'お菓子';
   String name = '';
   String amount = '';
@@ -179,12 +184,8 @@ class _InputPageState extends State<InputPage> {
                 ),
                 SizedBox(
                   width: 150,
-                  child: TextFormField(
-                    onChanged: (String value) {
-                      setState(() {
-                        date = value;
-                      });
-                    },
+                  child: ListTile(
+                    title: Text(now.day.toString()),
                   ),
                 ),
                 Text('日'),
@@ -329,7 +330,7 @@ class _InputPageState extends State<InputPage> {
                         .collection('input') // コレクションID指定
                         .doc() // ドキュメントID自動生成
                         .set({
-                      'date': date,
+                      'date': now,
                       'category': isSelectedItem,
                       'name': name,
                       'value': amount
