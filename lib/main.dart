@@ -343,7 +343,41 @@ class _InputPageState extends State<InputPage> {
                 ),
               ]
           ),
+
+          FloatingActionButton(
+            backgroundColor: Colors.blue,
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) {
+                  return OCRPage();
+                }),
+              );
+            },
+            child: Icon(Icons.add),
+          ),
+
         ] ,
+      ),
+    );
+  }
+}
+
+// OCR用Widget
+class OCRPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:AppBar(
+        title: Text('日本語OCR',style: TextStyle(fontSize: 30)),
+      ),
+      body: Center(
+        child: TextButton(
+          onPressed: () {
+            // "pop"で前の画面に戻る
+            Navigator.of(context).pop();
+          },
+          child: Text('入力画面へ'),
+        ),
       ),
     );
   }
