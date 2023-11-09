@@ -360,7 +360,7 @@ class _InputPageState extends State<InputPage> {
                 }),
               );
             },
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add_a_photo_outlined),
           ),
 
         ] ,
@@ -390,6 +390,7 @@ class GraphPage extends StatelessWidget {
     );
   }
 }
+
 
 // OCR用Widget
 class App extends StatefulWidget {
@@ -424,7 +425,7 @@ class _AppState extends State<App> {
     );
   }
 }
-
+//OCR基本画面
 class OCRPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -521,12 +522,14 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           // カメラ起動ボタン
           FloatingActionButton(
+            heroTag: "hero1",
             onPressed: () => _getImage(FileMode.CAMERA),
             tooltip: 'Pick Image from camera',
             child: Icon(Icons.camera_alt),
           ),
           // ギャラリー（ファイル）検索起動ボタン
           FloatingActionButton(
+            heroTag: "hero2",
             onPressed: () => _getImage(FileMode.GALLERY),
             tooltip: 'Pick Image from gallery',
             child: Icon(Icons.folder_open),
