@@ -15,7 +15,7 @@ Future<void> main() async {
   // Firebase初期化
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-     name: 'flutter2023-36589',
+     name: configurations.project,
      options: FirebaseOptions(
          apiKey: configurations.apiKey,
          authDomain: configurations.authDomain,
