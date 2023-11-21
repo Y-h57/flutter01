@@ -562,10 +562,14 @@ class _MyHomePageState extends State<MyHomePage> {
           print('ERROR: $e');
           return '読み取りエラーです';
         });
+
+        String receipt_name = _text.substring((_text!.indexOf('領収書')) + 3,_text!.indexOf('小 計'));
+        String receipt_value = _text.substring(_text.indexOf('*'),_text.indexOf('¥'));
         // OCR（テキスト認識）の結果を更新
         setState(() {
-          _result = _text.substring((_text!.indexOf('領収書')) + 3,(_text!.indexOf('小 計')));
-          print(_result);
+          _result = receipt_name + receipt_value;
+          // print(_result!.substring((_result!.indexOf('領収書')) + 3,_result!.indexOf('小 計')));
+          // print(_result!.substring(_result!.indexOf('*'),_result!.indexOf('¥')));
         });
       },
     );
