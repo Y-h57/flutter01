@@ -568,8 +568,6 @@ class _MyHomePageState extends State<MyHomePage> {
         // OCR（テキスト認識）の結果を更新
         setState(() {
           _result = receipt_name + receipt_value;
-          // print(_result!.substring((_result!.indexOf('領収書')) + 3,_result!.indexOf('小 計')));
-          // print(_result!.substring(_result!.indexOf('*'),_result!.indexOf('¥')));
         });
       },
     );
