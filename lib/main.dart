@@ -320,7 +320,15 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
 
+          TextButton(
+            onPressed: () {
+
+            },
+            child: Text('追加'),
+          ),
+
           Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 TextButton(
                   onPressed: () {
