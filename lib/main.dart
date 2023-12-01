@@ -175,9 +175,15 @@ class _InputPageState extends State<InputPage> {
   String name = '';
   String amount = '';
 
+  List<String> titleList = ['項目：','メモ：','支出：'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:AppBar(
+        title: Text('入力画面',style: TextStyle(fontSize: 20)),
+      ),
+
       body: ListView(
         children: <Widget>[
           Card(
@@ -322,7 +328,6 @@ class _InputPageState extends State<InputPage> {
 
           TextButton(
             onPressed: () {
-
             },
             child: Text('追加'),
           ),
@@ -383,8 +388,9 @@ class GraphPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title: Text('2023年',style: TextStyle(fontSize: 30)),
+        title: Text('グラフ表示画面',style: TextStyle(fontSize: 20)),
       ),
+
       body: Center(
         child: TextButton(
           // ボタンをクリックした時の処理
@@ -438,11 +444,11 @@ class OCRPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '日本語OCR',
+      title: 'レシート読み取りOCR',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: '日本語OCR'),
+      home: MyHomePage(title: 'レシート読み取りOCR'),
     );
   }
 }
@@ -490,7 +496,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('日本語OCR'),
+        title: Text('レシート読み取りOCR'),
       ),
       body: Center(
         child: Padding(
@@ -518,7 +524,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         } else if (_image != null) {
                           return 'ボタンを押すと解析が始まります';
                         } else {
-                          return 'OCR（テキスト認識）したい画像を撮影または読込んでください';
+                          return 'テキスト認識したいコンビニレシートを撮影または読込んでください。';
                         }
                       }())))),
             ]),
