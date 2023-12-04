@@ -177,6 +177,7 @@ class _InputPageState extends State<InputPage> {
   String amount = '';
 
   int n = 1;
+  List<String> listItems = ['項目：','メモ：','支出：'];
 
   @override
   Widget build(BuildContext context) {
@@ -221,7 +222,7 @@ class _InputPageState extends State<InputPage> {
                           SizedBox(
                             width: 100,
                             child: ListTile(
-                              title: Text('項目：'),
+                              title: Text(listItems[0]),
                             ),
                           ),
 
@@ -295,7 +296,7 @@ class _InputPageState extends State<InputPage> {
                           SizedBox(
                             width: 100,
                             child: ListTile(
-                              title: Text('メモ：'),
+                              title: Text(listItems[1]),
                             ),
                           ),
                           SizedBox(
@@ -318,7 +319,7 @@ class _InputPageState extends State<InputPage> {
                           SizedBox(
                             width: 100,
                             child: ListTile(
-                              title: Text('支出：'),
+                              title: Text(listItems[2]),
                             ),
                           ),
                           SizedBox(
@@ -595,12 +596,28 @@ class _MyHomePageState extends State<MyHomePage> {
           return '読み取りエラーです';
         });
 
-        String receipt_name = _text.substring((_text!.indexOf('領収書')) + 3,_text!.indexOf('小 計 (税抜 8%)'));
-        String receipt_value = _text.substring(_text.indexOf('*'),_text.indexOf('¥'));
-        // OCR（テキスト認識）の結果を更新
-        setState(() {
-          _result = receipt_name + receipt_value;
-        });
+        String receipt_name;
+        String receipt_value;
+
+        print(_text);
+        // セブン、ローソン
+        if (_text.contains('セブン-イレブン') == true){
+          receipt_name = _text.substring((_text!.indexOf('領収書')) + 3,_text!.indexOf('小 計 (税抜 8%)'));
+          receipt_value = _text.substring(_text.indexOf('*'),_text.indexOf('¥'));
+          // OCR（テキスト認識）の結果を更新
+          setState(() {
+            _result = receipt_name + receipt_value;
+          });
+        } else if (_text.contains('LAWSON') == true){
+          receipt_name = _text.substring((_text!.indexOf('【領収証】')) + 5,_text!.indexOf('合'));
+          receipt_value = _text.substring((_text.indexOf('軽')) - 3 ,_text.indexOf('¥'));
+          setState(() {
+            _result = receipt_name + receipt_value;
+          });
+        } else if (_text.contains('FamilyMart') == true){
+
+        }
+
       },
     );
   }
