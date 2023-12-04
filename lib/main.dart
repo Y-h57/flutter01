@@ -360,6 +360,21 @@ class _InputPageState extends State<InputPage> {
 
           const Gap(10),
 
+          FloatingActionButton(
+            heroTag: 'ocr',
+            backgroundColor: Colors.blue,
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) {
+                  return OCRPage();
+                }),
+              );
+            },
+            child: const Icon(Icons.add_a_photo_outlined),
+          ),
+
+          const Gap(10),
+
           FloatingActionButton.extended(
             heroTag: 'ok',
             label: Text('入力'),
@@ -374,25 +389,9 @@ class _InputPageState extends State<InputPage> {
                 'name': name,
                 'value': amount
               });
-
               // "pop"で前の画面に戻る
               Navigator.of(context).pop();
             },
-          ),
-
-          const Gap(10),
-
-          FloatingActionButton(
-            heroTag: 'ocr',
-            backgroundColor: Colors.blue,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return OCRPage();
-                }),
-              );
-            },
-            child: const Icon(Icons.add_a_photo_outlined),
           ),
         ],
       ),
@@ -596,7 +595,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return '読み取りエラーです';
         });
 
-        String receipt_name = _text.substring((_text!.indexOf('領収書')) + 3,_text!.indexOf('小 計'));
+        String receipt_name = _text.substring((_text!.indexOf('領収書')) + 3,_text!.indexOf('小 計 (税抜 8%)'));
         String receipt_value = _text.substring(_text.indexOf('*'),_text.indexOf('¥'));
         // OCR（テキスト認識）の結果を更新
         setState(() {
