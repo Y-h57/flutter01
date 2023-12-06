@@ -600,24 +600,31 @@ class _MyHomePageState extends State<MyHomePage> {
         String receipt_value;
 
         print(_text);
-        // セブン、ローソン
+        // セブン、ローソン、ファミマ　レシート分析
         if (_text.contains('セブン-イレブン') == true){
-          receipt_name = _text.substring((_text!.indexOf('領収書')) + 3,_text!.indexOf('小 計 (税抜 8%)'));
+          receipt_name = _text.substring(_text!.indexOf('領収書') + 3,_text!.indexOf('小 計 (税抜 8%)'));
           receipt_value = _text.substring(_text.indexOf('*'),_text.indexOf('¥'));
           // OCR（テキスト認識）の結果を更新
           setState(() {
             _result = receipt_name + receipt_value;
           });
         } else if (_text.contains('LAWSON') == true){
-          receipt_name = _text.substring((_text!.indexOf('【領収証】')) + 5,_text!.indexOf('合'));
-          receipt_value = _text.substring((_text.indexOf('軽')) - 3 ,_text.indexOf('¥'));
+          receipt_name = _text.substring(_text!.indexOf('【領収証】') + 5,_text!.indexOf('合'));
+          receipt_value = _text.substring(_text.indexOf('軽') - 4 ,_text.indexOf('¥'));
           setState(() {
             _result = receipt_name + receipt_value;
           });
         } else if (_text.contains('FamilyMart') == true){
-
+          receipt_name = _text.substring(_text!.indexOf('領収') + 3,_text!.indexOf('合'));
+          receipt_value = _text.substring(_text.indexOf('¥'));
+          setState(() {
+            _result = receipt_name + receipt_value;
+          });
+        } else {
+          setState(() {
+            _result = '読み取りエラーです。';
+          });
         }
-
       },
     );
   }
