@@ -177,7 +177,9 @@ class _InputPageState extends State<InputPage> {
   String amount = '';
 
   int n = 1;
-  List<String> listItems = ['項目：','メモ：','支出：'];
+  List<String> isselectedList = [];
+  List<String> nameList = [];
+  List<String> amountList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -222,7 +224,7 @@ class _InputPageState extends State<InputPage> {
                           SizedBox(
                             width: 100,
                             child: ListTile(
-                              title: Text(listItems[0]),
+                              title: Text('項目：'),
                             ),
                           ),
 
@@ -296,7 +298,7 @@ class _InputPageState extends State<InputPage> {
                           SizedBox(
                             width: 100,
                             child: ListTile(
-                              title: Text(listItems[1]),
+                              title: Text('メモ：'),
                             ),
                           ),
                           SizedBox(
@@ -319,7 +321,7 @@ class _InputPageState extends State<InputPage> {
                           SizedBox(
                             width: 100,
                             child: ListTile(
-                              title: Text(listItems[2]),
+                              title: Text('支出：'),
                             ),
                           ),
                           SizedBox(
@@ -399,6 +401,7 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
+
 
 // グラフ表示画面用Widget
 class GraphPage extends StatelessWidget {
@@ -545,6 +548,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           return 'テキスト認識したいコンビニレシートを撮影または読込んでください。';
                         }
                       }())))),
+
+              if (_image != null) _inputButton(),
+              Container(
+                alignment: Alignment.bottomCenter,
+              ),
+
             ]),
           ),
         ),
@@ -608,7 +617,6 @@ class _MyHomePageState extends State<MyHomePage> {
         if (_text.contains('セブン-イレブン') == true){
           receipt_name = _text.substring(_text!.indexOf('領収書') + 3,_text!.indexOf('小 計 (税抜 8%)'));
           receipt_value = _text.substring(_text.indexOf('*'),_text.indexOf('¥'));
-          // OCR（テキスト認識）の結果を更新
           setState(() {
             _result = receipt_name + receipt_value;
           });
@@ -632,6 +640,16 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }
+
+  Widget _inputButton() {
+    return ElevatedButton(
+      child: Text('入力'),
+      onPressed: (){
+
+      }
+    );
+  }
+
 }
 // カメラ経由かギャラリー（ファイル）経由かを示すフラグ
 enum FileMode{
