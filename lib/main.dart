@@ -16,15 +16,15 @@ Future<void> main() async {
   // Firebase初期化
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-     name: configurations.project,
-     options: FirebaseOptions(
-         apiKey: configurations.apiKey,
-         authDomain: configurations.authDomain,
-         projectId: configurations.projectId,
-         storageBucket: configurations.storageBucket,
-         messagingSenderId: configurations.messagingSenderId,
-         appId: configurations.appId
-     ),
+    name: configurations.project,
+    options: FirebaseOptions(
+        apiKey: configurations.apiKey,
+        authDomain: configurations.authDomain,
+        projectId: configurations.projectId,
+        storageBucket: configurations.storageBucket,
+        messagingSenderId: configurations.messagingSenderId,
+        appId: configurations.appId
+    ),
   );
   runApp(MyApp());
 }
@@ -90,7 +90,7 @@ class ListPage extends StatelessWidget {
               ),
 
               Expanded(
-                // FutureBuilder
+                // StreamBuilder
                 // 非同期処理の結果を元にWidgetを作れる
                 child: StreamBuilder<QuerySnapshot>(
                   // 入力日時でソート
@@ -114,9 +114,21 @@ class ListPage extends StatelessWidget {
                                 child: Column(
                                   children: <Widget>[
                                     Text(now.day.toString()),
-                                    Text(document['category']),
-                                    Text(document['name']),
-                                    Text(document['value']),
+                                    Text(document['category1']),
+                                    Text(document['name1']),
+                                    Text(document['value1']),
+                                    Text(document['category2']),
+                                    Text(document['name2']),
+                                    Text(document['value2']),
+                                    Text(document['category3']),
+                                    Text(document['name3']),
+                                    Text(document['value3']),
+                                    Text(document['category4']),
+                                    Text(document['name4']),
+                                    Text(document['value4']),
+                                    Text(document['category5']),
+                                    Text(document['name5']),
+                                    Text(document['value5']),
                                   ],
                                 )
                             ),
@@ -140,7 +152,7 @@ class ListPage extends StatelessWidget {
                       return InputPage();
                     }),
                   );
-                  },
+                },
                 child: Text('入力'),
               ),
 
@@ -172,14 +184,28 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   DateTime now = DateTime.now();
 
-  String? isSelectedItem = 'お菓子';
-  String name = '';
-  String amount = '';
+  String? isSelectedItem1 = 'お菓子';
+  String? isSelectedItem2 = 'お菓子';
+  String? isSelectedItem3 = 'お菓子';
+  String? isSelectedItem4 = 'お菓子';
+  String? isSelectedItem5 = 'お菓子';
 
-  int n = 1;
+  String name1 = '';
+  String name2 = '';
+  String name3 = '';
+  String name4 = '';
+  String name5 = '';
+
+  String amount1 = '';
+  String amount2 = '';
+  String amount3 = '';
+  String amount4 = '';
+  String amount5 = '';
+
   List<String> isselectedList = [];
   List<String> nameList = [];
   List<String> amountList = [];
+
 
   @override
   Widget build(BuildContext context) {
@@ -188,10 +214,9 @@ class _InputPageState extends State<InputPage> {
         title: Text('入力画面',style: TextStyle(fontSize: 20)),
       ),
 
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Card(
+      body: ListView(
+        children:<Widget> [
+          Card(
               child: Row(
                 children: <Widget>[
                   SizedBox(
@@ -210,159 +235,624 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
+          const Gap(30),
+          //①
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('項目①：'),
+                  ),
+                ),
 
-            ListView.builder(
-              shrinkWrap: true, //Column中にListView.builderするのに必要
-              physics: NeverScrollableScrollPhysics(), //Column中にListView.builderするのに必要
-              itemCount: n,
-              itemBuilder: (BuildContext context, int index){
-                return Column(
-                  children: <Widget>[
-                    Card(
-                      child: Row(
-                        children: <Widget>[
-                          SizedBox(
-                            width: 100,
-                            child: ListTile(
-                              title: Text('項目：'),
-                            ),
-                          ),
+                DropdownButton(
+                  items: const [
 
-                          DropdownButton(
-                            items: const [
-
-                              DropdownMenuItem(
-                                child: Text('お菓子'),
-                                value: 'お菓子',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('飲み物'),
-                                value: '飲み物',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('健康飲料'),
-                                value: '健康飲料',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('酒類'),
-                                value: '酒類',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('お弁当・お惣菜'),
-                                value: 'お弁当・お惣菜',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('おにぎり'),
-                                value: 'おにぎり',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('パン'),
-                                value: 'パン',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('スイーツ・アイス'),
-                                value: 'スイーツ・アイス',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('ホットスナック'),
-                                value: 'ホットスナック',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('日用品'),
-                                value: '日用品',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('雑誌類'),
-                                value: '雑誌類',
-                              ),
-                              DropdownMenuItem(
-                                child: Text('その他'),
-                                value: 'その他',
-                              ),
-                            ],
-
-                            onChanged: (String? value) {
-                              setState(() {
-                                isSelectedItem = value;
-                              });
-                            },
-                            value: isSelectedItem,
-                          ),
-                        ],
-                      ),
+                    DropdownMenuItem(
+                      child: Text('お菓子'),
+                      value: 'お菓子',
                     ),
-
-                    Card(
-                      child: Row(
-                        children: <Widget>[
-                          SizedBox(
-                            width: 100,
-                            child: ListTile(
-                              title: Text('メモ：'),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 150,
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {
-                                  name = value;
-                                });
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
+                    DropdownMenuItem(
+                      child: Text('飲み物'),
+                      value: '飲み物',
                     ),
-
-                    Card(
-                      child: Row(
-                        children: <Widget>[
-                          SizedBox(
-                            width: 100,
-                            child: ListTile(
-                              title: Text('支出：'),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 150,
-                            child: TextFormField(
-                              onChanged: (String value) {
-                                setState(() {
-                                  amount = value;
-                                });
-                              },
-                            ),
-                          ),
-                          Text('円'),
-                        ],
-                      ),
+                    DropdownMenuItem(
+                      child: Text('健康飲料'),
+                      value: '健康飲料',
                     ),
-
+                    DropdownMenuItem(
+                      child: Text('酒類'),
+                      value: '酒類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('お弁当・お惣菜'),
+                      value: 'お弁当・お惣菜',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('おにぎり'),
+                      value: 'おにぎり',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('パン'),
+                      value: 'パン',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('スイーツ・アイス'),
+                      value: 'スイーツ・アイス',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('ホットスナック'),
+                      value: 'ホットスナック',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('日用品'),
+                      value: '日用品',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('雑誌類'),
+                      value: '雑誌類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('その他'),
+                      value: 'その他',
+                    ),
                   ],
-                );
-              },
+
+                  onChanged: (String? value) {
+                    setState(() {
+                      isSelectedItem1 = value;
+                    });
+                  },
+                  value: isSelectedItem1,
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('商品名①：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        name1 = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('支出①：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        amount1 = value;
+                      });
+                    },
+                  ),
+                ),
+                Text('円'),
+              ],
+            ),
+          ),
+          const Gap(30),
+          //②
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('項目②：'),
+                  ),
+                ),
+
+                DropdownButton(
+                  items: const [
+
+                    DropdownMenuItem(
+                      child: Text('お菓子'),
+                      value: 'お菓子',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('飲み物'),
+                      value: '飲み物',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('健康飲料'),
+                      value: '健康飲料',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('酒類'),
+                      value: '酒類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('お弁当・お惣菜'),
+                      value: 'お弁当・お惣菜',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('おにぎり'),
+                      value: 'おにぎり',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('パン'),
+                      value: 'パン',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('スイーツ・アイス'),
+                      value: 'スイーツ・アイス',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('ホットスナック'),
+                      value: 'ホットスナック',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('日用品'),
+                      value: '日用品',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('雑誌類'),
+                      value: '雑誌類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('その他'),
+                      value: 'その他',
+                    ),
+                  ],
+
+                  onChanged: (String? value) {
+                    setState(() {
+                      isSelectedItem2 = value;
+                    });
+                  },
+                  value: isSelectedItem2,
+                ),
+              ],
+            ),
+          ),
+
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('商品名②：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        name2 = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('支出②：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        amount2 = value;
+                      });
+                    },
+                  ),
+                ),
+                Text('円'),
+              ],
+            ),
+          ),
+          const Gap(30),
+          //③
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('項目③：'),
+                  ),
+                ),
+
+                DropdownButton(
+                  items: const [
+
+                    DropdownMenuItem(
+                      child: Text('お菓子'),
+                      value: 'お菓子',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('飲み物'),
+                      value: '飲み物',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('健康飲料'),
+                      value: '健康飲料',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('酒類'),
+                      value: '酒類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('お弁当・お惣菜'),
+                      value: 'お弁当・お惣菜',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('おにぎり'),
+                      value: 'おにぎり',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('パン'),
+                      value: 'パン',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('スイーツ・アイス'),
+                      value: 'スイーツ・アイス',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('ホットスナック'),
+                      value: 'ホットスナック',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('日用品'),
+                      value: '日用品',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('雑誌類'),
+                      value: '雑誌類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('その他'),
+                      value: 'その他',
+                    ),
+                  ],
+
+                  onChanged: (String? value) {
+                    setState(() {
+                      isSelectedItem3 = value;
+                    });
+                  },
+                  value: isSelectedItem3,
+                ),
+              ],
+            ),
+          ),
+
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('商品名③：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        name3 = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('支出③：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        amount3 = value;
+                      });
+                    },
+                  ),
+                ),
+                Text('円'),
+              ],
+            ),
+          ),
+          const Gap(30),
+          //④
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('項目④：'),
+                  ),
+                ),
+
+                DropdownButton(
+                  items: const [
+
+                    DropdownMenuItem(
+                      child: Text('お菓子'),
+                      value: 'お菓子',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('飲み物'),
+                      value: '飲み物',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('健康飲料'),
+                      value: '健康飲料',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('酒類'),
+                      value: '酒類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('お弁当・お惣菜'),
+                      value: 'お弁当・お惣菜',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('おにぎり'),
+                      value: 'おにぎり',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('パン'),
+                      value: 'パン',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('スイーツ・アイス'),
+                      value: 'スイーツ・アイス',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('ホットスナック'),
+                      value: 'ホットスナック',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('日用品'),
+                      value: '日用品',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('雑誌類'),
+                      value: '雑誌類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('その他'),
+                      value: 'その他',
+                    ),
+                  ],
+
+                  onChanged: (String? value) {
+                    setState(() {
+                      isSelectedItem4 = value;
+                    });
+                  },
+                  value: isSelectedItem4,
+                ),
+              ],
+            ),
+          ),
+
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('商品名④：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        name4 = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('支出④：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        amount4 = value;
+                      });
+                    },
+                  ),
+                ),
+                Text('円'),
+              ],
+            ),
+          ),
+          const Gap(30),
+          //⑤
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('項目⑤：'),
+                  ),
+                ),
+
+                DropdownButton(
+                  items: const [
+
+                    DropdownMenuItem(
+                      child: Text('お菓子'),
+                      value: 'お菓子',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('飲み物'),
+                      value: '飲み物',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('健康飲料'),
+                      value: '健康飲料',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('酒類'),
+                      value: '酒類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('お弁当・お惣菜'),
+                      value: 'お弁当・お惣菜',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('おにぎり'),
+                      value: 'おにぎり',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('パン'),
+                      value: 'パン',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('スイーツ・アイス'),
+                      value: 'スイーツ・アイス',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('ホットスナック'),
+                      value: 'ホットスナック',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('日用品'),
+                      value: '日用品',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('雑誌類'),
+                      value: '雑誌類',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('その他'),
+                      value: 'その他',
+                    ),
+                  ],
+
+                  onChanged: (String? value) {
+                    setState(() {
+                      isSelectedItem5 = value;
+                    });
+                  },
+                  value: isSelectedItem5,
+                ),
+              ],
+            ),
+          ),
+
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('商品名⑤：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        name5 = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Card(
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('支出⑤：'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextFormField(
+                    onChanged: (String value) {
+                      setState(() {
+                        amount5 = value;
+                      });
+                    },
+                  ),
+                ),
+                Text('円'),
+              ],
+            ),
+          ),
+          const Gap(20),
+        ],
       ),
+
 
       floatingActionButton: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          FloatingActionButton(
-            heroTag: 'add',
-            backgroundColor: Colors.blue,
-            onPressed: () {
-              n++;
-              setState(() {
-              });
-            },
-            child: Icon(Icons.add),
-          ),
-
-          const Gap(10),
-
           FloatingActionButton(
             heroTag: 'ocr',
             backgroundColor: Colors.blue,
@@ -382,18 +872,105 @@ class _InputPageState extends State<InputPage> {
             heroTag: 'ok',
             label: Text('入力'),
             onPressed: () async {
-              // 投稿メッセージ用ドキュメント作成
-              await FirebaseFirestore.instance
-                  .collection('input') // コレクションID指定
-                  .doc() // ドキュメントID自動生成
-                  .set({
-                'date': now,
-                'category': isSelectedItem,
-                'name': name,
-                'value': amount
-              });
-              // "pop"で前の画面に戻る
-              Navigator.of(context).pop();
+              if(name1.isNotEmpty && name2.isEmpty && name3.isEmpty && name4.isEmpty && name5.isEmpty){
+                await FirebaseFirestore.instance
+                    .collection('input') // コレクションID指定
+                    .doc() // ドキュメントID自動生成
+                    .set({
+                  'date': now,
+                  'category1': isSelectedItem1,
+                  'name1': name1,
+                  'value1': amount1,
+                });
+                Navigator.of(context).pop(); // "pop"で前の画面に戻る
+              } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isEmpty && name4.isEmpty && name5.isEmpty){
+                await FirebaseFirestore.instance
+                    .collection('input') // コレクションID指定
+                    .doc() // ドキュメントID自動生成
+                    .set({
+                  'date': now,
+                  'category1': isSelectedItem1,
+                  'name1': name1,
+                  'value1': amount1,
+
+                  'category2': isSelectedItem2,
+                  'name2': name2,
+                  'value2': amount2
+                });
+                Navigator.of(context).pop(); // "pop"で前の画面に戻る
+              } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isNotEmpty && name4.isEmpty && name5.isEmpty){
+                await FirebaseFirestore.instance
+                    .collection('input') // コレクションID指定
+                    .doc() // ドキュメントID自動生成
+                    .set({
+                  'date': now,
+                  'category1': isSelectedItem1,
+                  'name1': name1,
+                  'value1': amount1,
+
+                  'category2': isSelectedItem2,
+                  'name2': name2,
+                  'value2': amount2,
+
+                  'category3': isSelectedItem3,
+                  'name3': name3,
+                  'value3': amount3
+                });
+                Navigator.of(context).pop(); // "pop"で前の画面に戻る
+              } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isNotEmpty && name4.isNotEmpty && name5.isEmpty){
+                await FirebaseFirestore.instance
+                    .collection('input') // コレクションID指定
+                    .doc() // ドキュメントID自動生成
+                    .set({
+                  'date': now,
+                  'category1': isSelectedItem1,
+                  'name1': name1,
+                  'value1': amount1,
+
+                  'category2': isSelectedItem2,
+                  'name2': name2,
+                  'value2': amount2,
+
+                  'category3': isSelectedItem3,
+                  'name3': name3,
+                  'value3': amount3,
+
+                  'category4': isSelectedItem4,
+                  'name4': name4,
+                  'value4': amount4
+                });
+                Navigator.of(context).pop(); // "pop"で前の画面に戻る
+              } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isNotEmpty && name4.isNotEmpty && name5.isNotEmpty){
+                await FirebaseFirestore.instance
+                    .collection('input') // コレクションID指定
+                    .doc() // ドキュメントID自動生成
+                    .set({
+                  'date': now,
+                  'category1': isSelectedItem1,
+                  'name1': name1,
+                  'value1': amount1,
+
+                  'category2': isSelectedItem2,
+                  'name2': name2,
+                  'value2': amount2,
+
+                  'category3': isSelectedItem3,
+                  'name3': name3,
+                  'value3': amount3,
+
+                  'category4': isSelectedItem4,
+                  'name4': name4,
+                  'value4': amount4,
+
+                  'category5': isSelectedItem5,
+                  'name5': name5,
+                  'value5': amount5,
+                });
+                Navigator.of(context).pop(); // "pop"で前の画面に戻る
+              } else {
+                return null;
+              }
+
             },
           ),
         ],
@@ -547,7 +1124,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         } else {
                           return 'テキスト認識したいコンビニレシートを撮影または読込んでください。';
                         }
-                      }())))),
+                      }()))
+                  )
+              ),
 
               if (_image != null) _inputButton(),
               Container(
@@ -643,10 +1222,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _inputButton() {
     return ElevatedButton(
-      child: Text('入力'),
-      onPressed: (){
-
-      }
+        child: Text('入力'),
+        onPressed: (){
+        }
     );
   }
 
@@ -656,4 +1234,3 @@ enum FileMode{
   CAMERA,
   GALLERY,
 }
-
