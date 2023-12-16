@@ -107,33 +107,98 @@ class ListPage extends StatelessWidget {
                     if (snapshot.hasData) {
                       final List<DocumentSnapshot> documents = snapshot.data!.docs;
                       // 取得した入力情報を元にリスト表示
-                      return ListView(
-                        children: documents.map((document) {
-                          return GestureDetector(
-                            child: Card(
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(now.day.toString()),
-                                    Text(document['category1']),
-                                    Text(document['name1']),
-                                    Text(document['value1']),
-                                    Text(document['category2']),
-                                    Text(document['name2']),
-                                    Text(document['value2']),
-                                    Text(document['category3']),
-                                    Text(document['name3']),
-                                    Text(document['value3']),
-                                    Text(document['category4']),
-                                    Text(document['name4']),
-                                    Text(document['value4']),
-                                    Text(document['category5']),
-                                    Text(document['name5']),
-                                    Text(document['value5']),
-                                  ],
-                                )
-                            ),
-                          );
-                        }).toList(),
+                      return ListView.builder(
+                        itemCount: documents.length,
+                        itemBuilder: (BuildContext context, int index){
+                          var doc = snapshot.data!.docs[index];
+                          var data = doc.data() as Map;
+                          if(data['name1'] != null && data['name2'] == null && data['name3'] == null && data['name4'] == null && data['name5'] == null){
+                            return Card(
+                              child: Column(
+                                children: [
+                                  Text(now.day.toString().toString()),
+                                  Text(data['category1'].toString()),
+                                  Text(data['name1'].toString()),
+                                  Text(data['value1'].toString()),
+                                ],
+                              ),
+                            );
+                          }else if(data['name1'] != null && data['name2'] != null && data['name3'] == null && data['name4'] == null && data['name5'] == null){
+                            return Card(
+                              child: Column(
+                                children: [
+                                  Text(now.day.toString().toString()),
+                                  Text(data['category1'].toString()),
+                                  Text(data['name1'].toString()),
+                                  Text(data['value1'].toString()),
+                                  Text(data['category2'].toString()),
+                                  Text(data['name2'].toString()),
+                                  Text(data['value2'].toString()),
+                                ],
+                              ),
+                            );
+                          }else if(data['name1'] != null && data['name2'] != null && data['name3'] != null && data['name4'] == null && data['name5'] == null){
+                            return Card(
+                              child: Column(
+                                children: [
+                                  Text(now.day.toString().toString()),
+                                  Text(data['category1'].toString()),
+                                  Text(data['name1'].toString()),
+                                  Text(data['value1'].toString()),
+                                  Text(data['category2'].toString()),
+                                  Text(data['name2'].toString()),
+                                  Text(data['value2'].toString()),
+                                  Text(data['category3'].toString()),
+                                  Text(data['name3'].toString()),
+                                  Text(data['value3'].toString()),
+                                ],
+                              ),
+                            );
+                          }else if(data['name1'] != null && data['name2'] != null && data['name3'] != null && data['name4'] != null && data['name5'] == null){
+                            return Card(
+                              child: Column(
+                                children: [
+                                  Text(now.day.toString().toString()),
+                                  Text(data['category1'].toString()),
+                                  Text(data['name1'].toString()),
+                                  Text(data['value1'].toString()),
+                                  Text(data['category2'].toString()),
+                                  Text(data['name2'].toString()),
+                                  Text(data['value2'].toString()),
+                                  Text(data['category3'].toString()),
+                                  Text(data['name3'].toString()),
+                                  Text(data['value3'].toString()),
+                                  Text(data['category4'].toString()),
+                                  Text(data['name4'].toString()),
+                                  Text(data['value4'].toString()),
+                                ],
+                              ),
+                            );
+                          }else{
+                            return Card(
+                              child: Column(
+                                children: [
+                                  Text(now.day.toString().toString()),
+                                  Text(data['category1'].toString()),
+                                  Text(data['name1'].toString()),
+                                  Text(data['value1'].toString()),
+                                  Text(data['category2'].toString()),
+                                  Text(data['name2'].toString()),
+                                  Text(data['value2'].toString()),
+                                  Text(data['category3'].toString()),
+                                  Text(data['name3'].toString()),
+                                  Text(data['value3'].toString()),
+                                  Text(data['category4'].toString()),
+                                  Text(data['name4'].toString()),
+                                  Text(data['value4'].toString()),
+                                  Text(data['category5'].toString()),
+                                  Text(data['name5'].toString()),
+                                  Text(data['value5'].toString()),
+                                ],
+                              ),
+                            );
+                          }
+                        }
                       );
                     }
                     return Center(
@@ -217,24 +282,24 @@ class _InputPageState extends State<InputPage> {
       body: ListView(
         children:<Widget> [
           Card(
-              child: Row(
-                children: <Widget>[
-                  SizedBox(
-                    width: 100,
-                    child: ListTile(
-                      title: Text('日付：'),
-                    ),
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: ListTile(
+                    title: Text('日付：'),
                   ),
-                  SizedBox(
-                    width: 150,
-                    child: ListTile(
-                      title: Text(now.day.toString()),
-                    ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: ListTile(
+                    title: Text(now.day.toString()),
                   ),
-                  Text('日'),
-                ],
-              ),
+                ),
+                Text('日'),
+              ],
             ),
+          ),
           const Gap(30),
           //①
           Card(
