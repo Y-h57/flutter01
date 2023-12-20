@@ -930,8 +930,18 @@ class _InputPageState extends State<InputPage> {
           const Gap(10),
 
           FloatingActionButton.extended(
+            heroTag: 'listpage',
+            label: Text('一覧'),
+            onPressed: () {
+              Navigator.popUntil(context, (route) => route.isFirst);
+            },
+          ),
+
+          const Gap(10),
+
+          FloatingActionButton.extended(
             heroTag: 'ok',
-            label: Text('入力'),
+            label: Text('OK'),
             onPressed: () async {
               if(name1.isNotEmpty && name2.isEmpty && name3.isEmpty && name4.isEmpty && name5.isEmpty){
                 await FirebaseFirestore.instance
