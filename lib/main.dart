@@ -214,7 +214,7 @@ class ListPage extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) {
                       // 入力・編集画面を指定
-                      return InputPage();
+                      return InputPage(nameList_re: [], amountList_re: [],);
                     }),
                   );
                 },
@@ -240,13 +240,24 @@ class ListPage extends StatelessWidget {
 
 // 入力・編集画面用Widget
 class InputPage extends StatefulWidget {
-  const InputPage({Key? key}) : super(key: key);
+  final List<String>  nameList_re;
+  final List<String>  amountList_re;
+  const InputPage({Key? key, required this.nameList_re, required this.amountList_re}) : super(key: key);
 
   @override
   State<InputPage> createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
+
+  late List<String> state1;
+  late List<String> state2;
+  @override
+  void initState() {
+    super.initState();
+    state1 = widget.nameList_re;
+    state2 = widget.amountList_re;
+  }
 
   DateTime now = DateTime.now();
 
@@ -363,6 +374,7 @@ class _InputPageState extends State<InputPage> {
 
                   onChanged: (String? value) {
                     setState(() {
+                      print(state1);
                       isSelectedItem1 = value;
                     });
                   },
@@ -953,7 +965,7 @@ class _InputPageState extends State<InputPage> {
                   'name1': name1,
                   'value1': amount1,
                 });
-                Navigator.of(context).pop(); // "pop"で前の画面に戻る
+                Navigator.popUntil(context, (route) => route.isFirst); // "pop"で前の画面に戻る
               } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isEmpty && name4.isEmpty && name5.isEmpty){
                 await FirebaseFirestore.instance
                     .collection('input') // コレクションID指定
@@ -968,7 +980,7 @@ class _InputPageState extends State<InputPage> {
                   'name2': name2,
                   'value2': amount2
                 });
-                Navigator.of(context).pop(); // "pop"で前の画面に戻る
+                Navigator.popUntil(context, (route) => route.isFirst); // "pop"で前の画面に戻る
               } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isNotEmpty && name4.isEmpty && name5.isEmpty){
                 await FirebaseFirestore.instance
                     .collection('input') // コレクションID指定
@@ -987,7 +999,7 @@ class _InputPageState extends State<InputPage> {
                   'name3': name3,
                   'value3': amount3
                 });
-                Navigator.of(context).pop(); // "pop"で前の画面に戻る
+                Navigator.popUntil(context, (route) => route.isFirst); // "pop"で前の画面に戻る
               } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isNotEmpty && name4.isNotEmpty && name5.isEmpty){
                 await FirebaseFirestore.instance
                     .collection('input') // コレクションID指定
@@ -1010,7 +1022,7 @@ class _InputPageState extends State<InputPage> {
                   'name4': name4,
                   'value4': amount4
                 });
-                Navigator.of(context).pop(); // "pop"で前の画面に戻る
+                Navigator.popUntil(context, (route) => route.isFirst); // "pop"で前の画面に戻る
               } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isNotEmpty && name4.isNotEmpty && name5.isNotEmpty){
                 await FirebaseFirestore.instance
                     .collection('input') // コレクションID指定
@@ -1037,7 +1049,7 @@ class _InputPageState extends State<InputPage> {
                   'name5': name5,
                   'value5': amount5,
                 });
-                Navigator.of(context).pop(); // "pop"で前の画面に戻る
+                Navigator.popUntil(context, (route) => route.isFirst); // "pop"で前の画面に戻る
               } else {
                 return null;
               }
@@ -1322,7 +1334,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: (){
           Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
-              return InputPage();
+              return InputPage(nameList_re: List.of(nameList), amountList_re: List.of(amountList));
             }),
           );
         }
