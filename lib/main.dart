@@ -108,97 +108,97 @@ class ListPage extends StatelessWidget {
                       final List<DocumentSnapshot> documents = snapshot.data!.docs;
                       // 取得した入力情報を元にリスト表示
                       return ListView.builder(
-                        itemCount: documents.length,
-                        itemBuilder: (BuildContext context, int index){
-                          var doc = snapshot.data!.docs[index];
-                          var data = doc.data() as Map;
-                          if(data['name1'] != null && data['name2'] == null && data['name3'] == null && data['name4'] == null && data['name5'] == null){
-                            return Card(
-                              child: Column(
-                                children: [
-                                  Text(now.day.toString().toString()),
-                                  Text(data['category1'].toString()),
-                                  Text(data['name1'].toString()),
-                                  Text(data['value1'].toString()),
-                                ],
-                              ),
-                            );
-                          }else if(data['name1'] != null && data['name2'] != null && data['name3'] == null && data['name4'] == null && data['name5'] == null){
-                            return Card(
-                              child: Column(
-                                children: [
-                                  Text(now.day.toString().toString()),
-                                  Text(data['category1'].toString()),
-                                  Text(data['name1'].toString()),
-                                  Text(data['value1'].toString()),
-                                  Text(data['category2'].toString()),
-                                  Text(data['name2'].toString()),
-                                  Text(data['value2'].toString()),
-                                ],
-                              ),
-                            );
-                          }else if(data['name1'] != null && data['name2'] != null && data['name3'] != null && data['name4'] == null && data['name5'] == null){
-                            return Card(
-                              child: Column(
-                                children: [
-                                  Text(now.day.toString().toString()),
-                                  Text(data['category1'].toString()),
-                                  Text(data['name1'].toString()),
-                                  Text(data['value1'].toString()),
-                                  Text(data['category2'].toString()),
-                                  Text(data['name2'].toString()),
-                                  Text(data['value2'].toString()),
-                                  Text(data['category3'].toString()),
-                                  Text(data['name3'].toString()),
-                                  Text(data['value3'].toString()),
-                                ],
-                              ),
-                            );
-                          }else if(data['name1'] != null && data['name2'] != null && data['name3'] != null && data['name4'] != null && data['name5'] == null){
-                            return Card(
-                              child: Column(
-                                children: [
-                                  Text(now.day.toString().toString()),
-                                  Text(data['category1'].toString()),
-                                  Text(data['name1'].toString()),
-                                  Text(data['value1'].toString()),
-                                  Text(data['category2'].toString()),
-                                  Text(data['name2'].toString()),
-                                  Text(data['value2'].toString()),
-                                  Text(data['category3'].toString()),
-                                  Text(data['name3'].toString()),
-                                  Text(data['value3'].toString()),
-                                  Text(data['category4'].toString()),
-                                  Text(data['name4'].toString()),
-                                  Text(data['value4'].toString()),
-                                ],
-                              ),
-                            );
-                          }else{
-                            return Card(
-                              child: Column(
-                                children: [
-                                  Text(now.day.toString().toString()),
-                                  Text(data['category1'].toString()),
-                                  Text(data['name1'].toString()),
-                                  Text(data['value1'].toString()),
-                                  Text(data['category2'].toString()),
-                                  Text(data['name2'].toString()),
-                                  Text(data['value2'].toString()),
-                                  Text(data['category3'].toString()),
-                                  Text(data['name3'].toString()),
-                                  Text(data['value3'].toString()),
-                                  Text(data['category4'].toString()),
-                                  Text(data['name4'].toString()),
-                                  Text(data['value4'].toString()),
-                                  Text(data['category5'].toString()),
-                                  Text(data['name5'].toString()),
-                                  Text(data['value5'].toString()),
-                                ],
-                              ),
-                            );
+                          itemCount: documents.length,
+                          itemBuilder: (BuildContext context, int index){
+                            var doc = snapshot.data!.docs[index];
+                            var data = doc.data() as Map;
+                            if(data['name1'] != null && data['name2'] == null && data['name3'] == null && data['name4'] == null && data['name5'] == null){
+                              return Card(
+                                child: Column(
+                                  children: [
+                                    Text(now.day.toString().toString()),
+                                    Text(data['category1'].toString()),
+                                    Text(data['name1'].toString()),
+                                    Text(data['value1'].toString()),
+                                  ],
+                                ),
+                              );
+                            }else if(data['name1'] != null && data['name2'] != null && data['name3'] == null && data['name4'] == null && data['name5'] == null){
+                              return Card(
+                                child: Column(
+                                  children: [
+                                    Text(now.day.toString().toString()),
+                                    Text(data['category1'].toString()),
+                                    Text(data['name1'].toString()),
+                                    Text(data['value1'].toString()),
+                                    Text(data['category2'].toString()),
+                                    Text(data['name2'].toString()),
+                                    Text(data['value2'].toString()),
+                                  ],
+                                ),
+                              );
+                            }else if(data['name1'] != null && data['name2'] != null && data['name3'] != null && data['name4'] == null && data['name5'] == null){
+                              return Card(
+                                child: Column(
+                                  children: [
+                                    Text(now.day.toString().toString()),
+                                    Text(data['category1'].toString()),
+                                    Text(data['name1'].toString()),
+                                    Text(data['value1'].toString()),
+                                    Text(data['category2'].toString()),
+                                    Text(data['name2'].toString()),
+                                    Text(data['value2'].toString()),
+                                    Text(data['category3'].toString()),
+                                    Text(data['name3'].toString()),
+                                    Text(data['value3'].toString()),
+                                  ],
+                                ),
+                              );
+                            }else if(data['name1'] != null && data['name2'] != null && data['name3'] != null && data['name4'] != null && data['name5'] == null){
+                              return Card(
+                                child: Column(
+                                  children: [
+                                    Text(now.day.toString().toString()),
+                                    Text(data['category1'].toString()),
+                                    Text(data['name1'].toString()),
+                                    Text(data['value1'].toString()),
+                                    Text(data['category2'].toString()),
+                                    Text(data['name2'].toString()),
+                                    Text(data['value2'].toString()),
+                                    Text(data['category3'].toString()),
+                                    Text(data['name3'].toString()),
+                                    Text(data['value3'].toString()),
+                                    Text(data['category4'].toString()),
+                                    Text(data['name4'].toString()),
+                                    Text(data['value4'].toString()),
+                                  ],
+                                ),
+                              );
+                            }else{
+                              return Card(
+                                child: Column(
+                                  children: [
+                                    Text(now.day.toString().toString()),
+                                    Text(data['category1'].toString()),
+                                    Text(data['name1'].toString()),
+                                    Text(data['value1'].toString()),
+                                    Text(data['category2'].toString()),
+                                    Text(data['name2'].toString()),
+                                    Text(data['value2'].toString()),
+                                    Text(data['category3'].toString()),
+                                    Text(data['name3'].toString()),
+                                    Text(data['value3'].toString()),
+                                    Text(data['category4'].toString()),
+                                    Text(data['name4'].toString()),
+                                    Text(data['value4'].toString()),
+                                    Text(data['category5'].toString()),
+                                    Text(data['name5'].toString()),
+                                    Text(data['value5'].toString()),
+                                  ],
+                                ),
+                              );
+                            }
                           }
-                        }
                       );
                     }
                     return Center(
@@ -247,6 +247,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
   DateTime now = DateTime.now();
 
   String? isSelectedItem1 = 'お菓子';
@@ -266,11 +267,6 @@ class _InputPageState extends State<InputPage> {
   String amount3 = '';
   String amount4 = '';
   String amount5 = '';
-
-  List<String> isselectedList = [];
-  List<String> nameList = [];
-  List<String> amountList = [];
-
 
   @override
   Widget build(BuildContext context) {
@@ -1102,16 +1098,13 @@ class _AppState extends State<App> {
     );
   }
 }
+
 //OCR基本画面
 class OCRPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'レシート読み取りOCR',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'レシート読み取りOCR'),
+    return Scaffold(
+      body: MyHomePage(title: 'レシート読み取りOCR'),
     );
   }
 }
@@ -1124,6 +1117,10 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
+
+  List<String> nameList = [];
+  List<String> amountList = [];
+
   // null safety対応のため、?でnull許容
   File? _image;
   final _picker = ImagePicker();
@@ -1252,27 +1249,51 @@ class _MyHomePageState extends State<MyHomePage> {
         String receipt_name;
         String receipt_value;
 
+
         print(_text);
-        print('-------------------------');
-        print(_text.indexOf('¥'));
-        print(_text.indexOf(')'));
-        print('-------------------------');
         // セブン、ローソン、ファミマ　レシート分析
         if (_text.contains('セブン-イレブン') == true){
           receipt_name = _text.substring(_text!.indexOf('領収書') + 3,_text!.indexOf('小 計 (税抜 8%)'));
           receipt_value = _text.substring(_text.indexOf('*'),_text.indexOf('¥'));
+
+          nameList = receipt_name.split('\n');
+          amountList = receipt_value.split('\n');
+
+          print('----------------------');
+          print(nameList);
+          print(amountList);
+          print('----------------------');
+
           setState(() {
             _result = receipt_name + receipt_value;
           });
         } else if (_text.contains('LAWSON') == true){
           receipt_name = _text.substring(_text!.indexOf('【領収証】') + 5,_text!.indexOf('合'));
           receipt_value = _text.substring(_text.indexOf('軽') - 4 ,_text.indexOf('¥'));
+
+          nameList = receipt_name.split('\n');
+          amountList = receipt_value.split('\n');
+
+          print('----------------------');
+          print(nameList);
+          print(amountList);
+          print('----------------------');
+
           setState(() {
             _result = receipt_name + receipt_value;
           });
         } else if (_text.contains('FamilyMart') == true){
           receipt_name = _text.substring(_text!.indexOf('領収') + 3,_text!.indexOf('合'));
           receipt_value = _text.substring(_text.indexOf('¥'),_text.indexOf(')',110) - 9);
+
+          nameList = receipt_name.split('\n');
+          amountList = receipt_value.split('\n');
+
+          print('----------------------');
+          print(nameList);
+          print(amountList);
+          print('----------------------');
+
           setState(() {
             _result = receipt_name + receipt_value;
           });
@@ -1289,6 +1310,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return ElevatedButton(
         child: Text('入力'),
         onPressed: (){
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) {
+              return InputPage();
+            }),
+          );
         }
     );
   }
