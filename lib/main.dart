@@ -53,7 +53,7 @@ class ListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar:AppBar(
-          title: Text('2023年',style: TextStyle(fontSize: 30)),
+          title: Text('一覧画面',style: TextStyle(fontSize: 30)),
         ),
 
         body: Center(
@@ -220,17 +220,7 @@ class ListPage extends StatelessWidget {
                 },
                 child: Text('入力'),
               ),
-
-              OutlinedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return GraphPage();
-                    }),
-                  );
-                },
-                child: Text('グラフ表示画面'),
-              ),
+              const Gap(15),
             ],
           ),
         )
@@ -252,6 +242,7 @@ class _InputPageState extends State<InputPage> {
 
   late List<String> state1;
   late List<String> state2;
+
   @override
   void initState() {
     super.initState();
@@ -278,6 +269,116 @@ class _InputPageState extends State<InputPage> {
   String amount3 = '';
   String amount4 = '';
   String amount5 = '';
+
+  String? _shohin1(){
+    if(state1.isEmpty){
+      return null;
+    }else{
+      setState(() {
+        name1 = state1[0];
+      });
+      return state1[0];
+    }
+  }
+
+  String? _shohin2(){
+    if(state1.isEmpty || state1.length < 2){
+      return null;
+    }else{
+      setState(() {
+        name2 = state1[1];
+      });
+      return state1[1];
+    }
+  }
+
+  String? _shohin3(){
+    if(state1.isEmpty || state1.length < 3){
+      return null;
+    }else{
+      setState(() {
+        name3 = state1[2];
+      });
+      return state1[2];
+    }
+  }
+
+  String? _shohin4(){
+    if(state1.isEmpty || state1.length < 4){
+      return null;
+    }else{
+      setState(() {
+        name4 = state1[3];
+      });
+      return state1[3];
+    }
+  }
+
+  String? _shohin5(){
+    if(state1.isEmpty || state1.length < 5){
+      return null;
+    }else{
+      setState(() {
+        name5 = state1[4];
+      });
+      return state1[4];
+    }
+  }
+
+  String? _nedan1(){
+    if(state2.isEmpty){
+      return null;
+    }else{
+      setState(() {
+        amount1 = state2[0];
+      });
+      return state2[0];
+    }
+  }
+
+  String? _nedan2(){
+    if(state2.isEmpty || state2.length < 2){
+      return null;
+    }else{
+      setState(() {
+        amount2 = state2[1];
+      });
+      return state2[1];
+    }
+  }
+
+  String? _nedan3(){
+    if(state2.isEmpty || state2.length < 3){
+      return null;
+    }else{
+      setState(() {
+        amount3 = state2[2];
+      });
+      return state2[2];
+    }
+  }
+
+  String? _nedan4(){
+    if(state2.isEmpty || state2.length < 4){
+      return null;
+    }else{
+      setState(() {
+        amount4 = state2[3];
+      });
+      return state2[3];
+    }
+  }
+
+  String? _nedan5(){
+    if(state2.isEmpty || state2.length < 5){
+      return null;
+    }else{
+      setState(() {
+        amount5 = state2[4];
+      });
+      return state2[4];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -396,6 +497,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 150,
                   child: TextFormField(
+                    initialValue: _shohin1(),
                     onChanged: (String value) {
                       setState(() {
                         name1 = value;
@@ -419,6 +521,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 150,
                   child: TextFormField(
+                    initialValue: _nedan1(),
                     onChanged: (String value) {
                       setState(() {
                         amount1 = value;
@@ -518,6 +621,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 150,
                   child: TextFormField(
+                    initialValue: _shohin2(),
                     onChanged: (String value) {
                       setState(() {
                         name2 = value;
@@ -541,6 +645,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 150,
                   child: TextFormField(
+                    initialValue: _nedan2(),
                     onChanged: (String value) {
                       setState(() {
                         amount2 = value;
@@ -640,6 +745,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 150,
                   child: TextFormField(
+                    initialValue: _shohin3(),
                     onChanged: (String value) {
                       setState(() {
                         name3 = value;
@@ -663,6 +769,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 150,
                   child: TextFormField(
+                    initialValue: _nedan3(),
                     onChanged: (String value) {
                       setState(() {
                         amount3 = value;
@@ -762,6 +869,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 150,
                   child: TextFormField(
+                    initialValue: _shohin4(),
                     onChanged: (String value) {
                       setState(() {
                         name4 = value;
@@ -785,6 +893,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 150,
                   child: TextFormField(
+                    initialValue: _nedan4(),
                     onChanged: (String value) {
                       setState(() {
                         amount4 = value;
@@ -884,6 +993,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 150,
                   child: TextFormField(
+                    initialValue: _shohin5(),
                     onChanged: (String value) {
                       setState(() {
                         name5 = value;
@@ -907,6 +1017,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 150,
                   child: TextFormField(
+                    initialValue: _nedan5(),
                     onChanged: (String value) {
                       setState(() {
                         amount5 = value;
@@ -1061,31 +1172,6 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-
-
-// グラフ表示画面用Widget
-class GraphPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar:AppBar(
-        title: Text('グラフ表示画面',style: TextStyle(fontSize: 20)),
-      ),
-
-      body: Center(
-        child: TextButton(
-          // ボタンをクリックした時の処理
-          onPressed: () {
-            // "pop"で前の画面に戻る
-            Navigator.of(context).pop();
-          },
-          child: Text('一覧画面へ'),
-        ),
-      ),
-    );
-  }
-}
-
 
 // OCR用Widget
 class App extends StatefulWidget {
@@ -1279,7 +1365,13 @@ class _MyHomePageState extends State<MyHomePage> {
           receipt_value = _text.substring(_text.indexOf('*'),_text.indexOf('¥'));
 
           nameList = receipt_name.split('\n');
+          if(nameList[0] == ''){
+            nameList.removeAt(0);
+          }
           amountList = receipt_value.split('\n');
+          if(amountList[0] == ''){
+            amountList.removeAt(0);
+          }
 
           print('----------------------');
           print(nameList);
@@ -1294,7 +1386,13 @@ class _MyHomePageState extends State<MyHomePage> {
           receipt_value = _text.substring(_text.indexOf('軽') - 4 ,_text.indexOf('¥'));
 
           nameList = receipt_name.split('\n');
+          if(nameList[0] == ''){
+            nameList.removeAt(0);
+          }
           amountList = receipt_value.split('\n');
+          if(amountList[0] == ''){
+            amountList.removeAt(0);
+          }
 
           print('----------------------');
           print(nameList);
@@ -1309,7 +1407,13 @@ class _MyHomePageState extends State<MyHomePage> {
           receipt_value = _text.substring(_text.indexOf('¥'),_text.indexOf(')',110) - 9);
 
           nameList = receipt_name.split('\n');
+          if(nameList[0] == ''){
+            nameList.removeAt(0);
+          }
           amountList = receipt_value.split('\n');
+          if(amountList[0] == ''){
+            amountList.removeAt(0);
+          }
 
           print('----------------------');
           print(nameList);
