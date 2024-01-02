@@ -49,6 +49,7 @@ class MyApp extends StatelessWidget {
 
 // 一覧画面用Widget
 class ListPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,85 +116,92 @@ class ListPage extends StatelessWidget {
                             if(data['name1'] != null && data['name2'] == null && data['name3'] == null && data['name4'] == null && data['name5'] == null){
                               return Card(
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.day.toString().toString()),
-                                    Text(data['category1'].toString()),
-                                    Text(data['name1'].toString()),
-                                    Text(data['value1'].toString()),
+                                    Text(now.day.toString().toString() + '日'),
+                                    Text('● 内訳'),
+                                    Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
+                                    Text('　' + '( ' + data['category1'].toString() + ' )'),
                                   ],
                                 ),
                               );
+
+
                             }else if(data['name1'] != null && data['name2'] != null && data['name3'] == null && data['name4'] == null && data['name5'] == null){
                               return Card(
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.day.toString().toString()),
-                                    Text(data['category1'].toString()),
-                                    Text(data['name1'].toString()),
-                                    Text(data['value1'].toString()),
-                                    Text(data['category2'].toString()),
-                                    Text(data['name2'].toString()),
-                                    Text(data['value2'].toString()),
+                                    Text(now.day.toString().toString() + '日'),
+                                    Text('● 内訳'),
+                                    Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
+                                    Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
+
+                                    Text('・' + data['name2'].toString() + '　　　' + data['value2'].toString() + '円'),
+                                    Text('　' + '( ' + data['category2'].toString() + ' )'),
                                   ],
                                 ),
                               );
                             }else if(data['name1'] != null && data['name2'] != null && data['name3'] != null && data['name4'] == null && data['name5'] == null){
                               return Card(
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.day.toString().toString()),
-                                    Text(data['category1'].toString()),
-                                    Text(data['name1'].toString()),
-                                    Text(data['value1'].toString()),
-                                    Text(data['category2'].toString()),
-                                    Text(data['name2'].toString()),
-                                    Text(data['value2'].toString()),
-                                    Text(data['category3'].toString()),
-                                    Text(data['name3'].toString()),
-                                    Text(data['value3'].toString()),
+                                    Text(now.day.toString().toString() + '日'),
+                                    Text('● 内訳'),
+                                    Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
+                                    Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
+
+                                    Text('・' + data['name2'].toString() + '　　　' + data['value2'].toString() + '円'),
+                                    Text('　' + '( ' + data['category2'].toString() + ' )' + '\n'),
+
+                                    Text('・' + data['name3'].toString() + '　　　' + data['value3'].toString() + '円'),
+                                    Text('　' + '( ' + data['category3'].toString() + ' )'),
                                   ],
                                 ),
                               );
                             }else if(data['name1'] != null && data['name2'] != null && data['name3'] != null && data['name4'] != null && data['name5'] == null){
                               return Card(
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.day.toString().toString()),
-                                    Text(data['category1'].toString()),
-                                    Text(data['name1'].toString()),
-                                    Text(data['value1'].toString()),
-                                    Text(data['category2'].toString()),
-                                    Text(data['name2'].toString()),
-                                    Text(data['value2'].toString()),
-                                    Text(data['category3'].toString()),
-                                    Text(data['name3'].toString()),
-                                    Text(data['value3'].toString()),
-                                    Text(data['category4'].toString()),
-                                    Text(data['name4'].toString()),
-                                    Text(data['value4'].toString()),
+                                    Text(now.day.toString().toString() + '日'),
+                                    Text('● 内訳'),
+                                    Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
+                                    Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
+
+                                    Text('・' + data['name2'].toString() + '　　　' + data['value2'].toString() + '円'),
+                                    Text('　' + '( ' + data['category2'].toString() + ' )' + '\n'),
+
+                                    Text('・' + data['name3'].toString() + '　　　' + data['value3'].toString() + '円'),
+                                    Text('　' + '( ' + data['category3'].toString() + ' )' + '\n'),
+
+                                    Text('・' + data['name4'].toString() + '　　　' + data['value4'].toString() + '円'),
+                                    Text('　' + '( ' + data['category4'].toString() + ' )'),
                                   ],
                                 ),
                               );
                             }else{
                               return Card(
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.day.toString().toString()),
-                                    Text(data['category1'].toString()),
-                                    Text(data['name1'].toString()),
-                                    Text(data['value1'].toString()),
-                                    Text(data['category2'].toString()),
-                                    Text(data['name2'].toString()),
-                                    Text(data['value2'].toString()),
-                                    Text(data['category3'].toString()),
-                                    Text(data['name3'].toString()),
-                                    Text(data['value3'].toString()),
-                                    Text(data['category4'].toString()),
-                                    Text(data['name4'].toString()),
-                                    Text(data['value4'].toString()),
-                                    Text(data['category5'].toString()),
-                                    Text(data['name5'].toString()),
-                                    Text(data['value5'].toString()),
+                                    Text(now.day.toString().toString() + '日'),
+                                    Text('● 内訳'),
+                                    Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
+                                    Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
+
+                                    Text('・' + data['name2'].toString() + '　　　' + data['value2'].toString() + '円'),
+                                    Text('　' + '( ' + data['category2'].toString() + ' )' + '\n'),
+
+                                    Text('・' + data['name3'].toString() + '　　　' + data['value3'].toString() + '円'),
+                                    Text('　' + '( ' + data['category3'].toString() + ' )' + '\n'),
+
+                                    Text('・' + data['name4'].toString() + '　　　' + data['value4'].toString() + '円'),
+                                    Text('　' + '( ' + data['category4'].toString() + ' )' + '\n'),
+
+                                    Text('・' + data['name5'].toString() + '　　　' + data['value5'].toString() + '円'),
+                                    Text('　' + '( ' + data['category5'].toString() + ' )'),
                                   ],
                                 ),
                               );
@@ -1233,7 +1241,11 @@ class _MyHomePageState extends State<MyHomePage> {
   File? _image;
   final _picker = ImagePicker();
   // null safety対応のため、?でnull許容
-  String? _result;
+  String? _re1;
+  String? _re2;
+  String? _re3;
+  String? _re4;
+
   @override
   void initState() {
     super.initState();
@@ -1278,25 +1290,26 @@ class _MyHomePageState extends State<MyHomePage> {
               if (_image != null) Image.file(_image!, height: 400),
               // 画像を取得できたら解析ボタンを表示
               if (_image != null) _analysisButton(),
+
               Container(
-                  height: 240,
+                  height: 60,
                   // OCR（テキスト検索）の結果をスクロール表示できるようにするため
                   // 結果表示部分をSingleChildScrollViewでラップ
                   child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Text((() {
-                        // OCR（テキスト認識）の結果（_result）を取得したら表示
-                        if (_result != null) {
-                          // null safety対応のため_result!とする（_resultはnullにならない）
-                          return _result!;
-                        } else if (_image != null) {
-                          return 'ボタンを押すと解析が始まります';
+                        if(_re1 != null){
+                          return '取得結果は以下の通りです。';
+                        }else if (_image != null) {
+                          return 'ボタンを押すと解析が始まります。';
                         } else {
                           return 'テキスト認識したいコンビニレシートを撮影または読込んでください。';
                         }
                       }()))
                   )
               ),
+
+              if (_re1 != null) _textformfield(),
 
               if (_image != null) _inputButton(),
               Container(
@@ -1307,9 +1320,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          if(_image == null)
           // カメラ起動ボタン
           FloatingActionButton(
             heroTag: "hero1",
@@ -1318,6 +1333,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Icon(Icons.camera_alt),
           ),
           const Gap(10),
+          if(_image == null)
           // ギャラリー（ファイル）検索起動ボタン
           FloatingActionButton(
             heroTag: "hero2",
@@ -1359,76 +1375,111 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
         print(_text);
-        // セブン、ローソン、ファミマ　レシート分析
+        // セブン、ローソン、ファミマ　レシート　商品名分析
         if (_text.contains('セブン-イレブン') == true){
           receipt_name = _text.substring(_text!.indexOf('領収書') + 3,_text!.indexOf('小 計 (税抜 8%)'));
-          receipt_value = _text.substring(_text.indexOf('*'),_text.indexOf('¥'));
-
-          nameList = receipt_name.split('\n');
-          if(nameList[0] == ''){
-            nameList.removeAt(0);
-          }
-          amountList = receipt_value.split('\n');
-          if(amountList[0] == ''){
-            amountList.removeAt(0);
-          }
-
-          print('----------------------');
-          print(nameList);
-          print(amountList);
-          print('----------------------');
 
           setState(() {
-            _result = receipt_name + receipt_value;
+            _re1 = receipt_name;
           });
         } else if (_text.contains('LAWSON') == true){
           receipt_name = _text.substring(_text!.indexOf('【領収証】') + 5,_text!.indexOf('合'));
-          receipt_value = _text.substring(_text.indexOf('軽') - 4 ,_text.indexOf('¥'));
-
-          nameList = receipt_name.split('\n');
-          if(nameList[0] == ''){
-            nameList.removeAt(0);
-          }
-          amountList = receipt_value.split('\n');
-          if(amountList[0] == ''){
-            amountList.removeAt(0);
-          }
-
-          print('----------------------');
-          print(nameList);
-          print(amountList);
-          print('----------------------');
 
           setState(() {
-            _result = receipt_name + receipt_value;
+            _re1 = receipt_name;
           });
         } else if (_text.contains('FamilyMart') == true){
           receipt_name = _text.substring(_text!.indexOf('領収') + 3,_text!.indexOf('合'));
-          receipt_value = _text.substring(_text.indexOf('¥'),_text.indexOf(')',110) - 9);
-
-          nameList = receipt_name.split('\n');
-          if(nameList[0] == ''){
-            nameList.removeAt(0);
-          }
-          amountList = receipt_value.split('\n');
-          if(amountList[0] == ''){
-            amountList.removeAt(0);
-          }
-
-          print('----------------------');
-          print(nameList);
-          print(amountList);
-          print('----------------------');
 
           setState(() {
-            _result = receipt_name + receipt_value;
+            _re1 = receipt_name;
           });
         } else {
           setState(() {
-            _result = '読み取りエラーです。';
+            _re1 = '読み取りエラーです。';
           });
         }
+
+        // セブン、ローソン、ファミマ　レシート　価格分析
+        if (_text.contains('セブン-イレブン') == true){
+          receipt_value = _text.substring(_text.indexOf('*'),_text.indexOf('¥'));
+
+          setState(() {
+            _re2 = receipt_value;
+          });
+        } else if (_text.contains('LAWSON') == true){
+          receipt_value = _text.substring(_text.indexOf('軽') - 4 ,_text.indexOf('¥'));
+
+          setState(() {
+            _re2 = receipt_value;
+          });
+        } else if (_text.contains('FamilyMart') == true){
+          receipt_value = _text.substring(_text.indexOf('¥'),_text.indexOf(')',110) - 9);
+
+          setState(() {
+            _re2 = receipt_value;
+          });
+        } else {
+          setState(() {
+            _re2 = '読み取りエラーです。';
+          });
+        }
+
       },
+    );
+  }
+
+  String? _result1(){
+    if (_re1 != null) {
+      return _re1;
+    }else{
+      return null;
+    }
+  }
+
+  String? _result2(){
+    if (_re2 != null) {
+      return _re2;
+    }else{
+      return null;
+    }
+  }
+
+  Widget _textformfield(){
+    return Column(
+      children:<Widget>[
+        Text('商品名'),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: TextFormField(
+            initialValue: _result1(),
+            maxLines: 5,
+            keyboardType: TextInputType.multiline,
+            decoration: InputDecoration(border: OutlineInputBorder()),
+            onChanged: (String value) {
+              setState(() {
+                _re3 = value;
+              });
+            },
+          ),
+        ),
+
+        Text('価格'),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: TextFormField(
+            initialValue: _result2(),
+            maxLines: 5,
+            keyboardType: TextInputType.multiline,
+            decoration: InputDecoration(border: OutlineInputBorder()),
+            onChanged: (String value) {
+              setState(() {
+                _re4 = value;
+              });
+            },
+          ),
+        ),
+      ],
     );
   }
 
@@ -1436,6 +1487,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return ElevatedButton(
         child: Text('入力'),
         onPressed: (){
+          nameList = _re3!.split('\n');
+          amountList = _re4!.split('\n');
           Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
               return InputPage(nameList_re: List.of(nameList), amountList_re: List.of(amountList));
