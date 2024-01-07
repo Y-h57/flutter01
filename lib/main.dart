@@ -1082,7 +1082,7 @@ class _InputPageState extends State<InputPage> {
                   'date': now,
                   'category1': isSelectedItem1,
                   'name1': name1,
-                  'value1': amount1,
+                  'value1': int.parse(amount1),
                 });
                 Navigator.popUntil(context, (route) => route.isFirst); // "pop"で前の画面に戻る
               } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isEmpty && name4.isEmpty && name5.isEmpty){
@@ -1093,11 +1093,11 @@ class _InputPageState extends State<InputPage> {
                   'date': now,
                   'category1': isSelectedItem1,
                   'name1': name1,
-                  'value1': amount1,
+                  'value1': int.parse(amount1),
 
                   'category2': isSelectedItem2,
                   'name2': name2,
-                  'value2': amount2
+                  'value2': int.parse(amount2)
                 });
                 Navigator.popUntil(context, (route) => route.isFirst); // "pop"で前の画面に戻る
               } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isNotEmpty && name4.isEmpty && name5.isEmpty){
@@ -1108,15 +1108,15 @@ class _InputPageState extends State<InputPage> {
                   'date': now,
                   'category1': isSelectedItem1,
                   'name1': name1,
-                  'value1': amount1,
+                  'value1': int.parse(amount1),
 
                   'category2': isSelectedItem2,
                   'name2': name2,
-                  'value2': amount2,
+                  'value2': int.parse(amount2),
 
                   'category3': isSelectedItem3,
                   'name3': name3,
-                  'value3': amount3
+                  'value3': int.parse(amount3)
                 });
                 Navigator.popUntil(context, (route) => route.isFirst); // "pop"で前の画面に戻る
               } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isNotEmpty && name4.isNotEmpty && name5.isEmpty){
@@ -1127,19 +1127,19 @@ class _InputPageState extends State<InputPage> {
                   'date': now,
                   'category1': isSelectedItem1,
                   'name1': name1,
-                  'value1': amount1,
+                  'value1': int.parse(amount1),
 
                   'category2': isSelectedItem2,
                   'name2': name2,
-                  'value2': amount2,
+                  'value2': int.parse(amount2),
 
                   'category3': isSelectedItem3,
                   'name3': name3,
-                  'value3': amount3,
+                  'value3': int.parse(amount3),
 
                   'category4': isSelectedItem4,
                   'name4': name4,
-                  'value4': amount4
+                  'value4': int.parse(amount4)
                 });
                 Navigator.popUntil(context, (route) => route.isFirst); // "pop"で前の画面に戻る
               } else if (name1.isNotEmpty && name2.isNotEmpty && name3.isNotEmpty && name4.isNotEmpty && name5.isNotEmpty){
@@ -1150,23 +1150,23 @@ class _InputPageState extends State<InputPage> {
                   'date': now,
                   'category1': isSelectedItem1,
                   'name1': name1,
-                  'value1': amount1,
+                  'value1': int.parse(amount1),
 
                   'category2': isSelectedItem2,
                   'name2': name2,
-                  'value2': amount2,
+                  'value2': int.parse(amount2),
 
                   'category3': isSelectedItem3,
                   'name3': name3,
-                  'value3': amount3,
+                  'value3': int.parse(amount3),
 
                   'category4': isSelectedItem4,
                   'name4': name4,
-                  'value4': amount4,
+                  'value4': int.parse(amount4),
 
                   'category5': isSelectedItem5,
                   'name5': name5,
-                  'value5': amount5,
+                  'value5': int.parse(amount5),
                 });
                 Navigator.popUntil(context, (route) => route.isFirst); // "pop"で前の画面に戻る
               } else {
@@ -1311,7 +1311,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
               if (_re1 != null) _textformfield(),
 
-              if (_image != null) _inputButton(),
+              if (_re1 != null) _inputButton(),
               Container(
                 alignment: Alignment.bottomCenter,
               ),
@@ -1431,6 +1431,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String? _result1(){
     if (_re1 != null) {
+      _re1 = _re1!.trimLeft();
       return _re1;
     }else{
       return null;
@@ -1439,6 +1440,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String? _result2(){
     if (_re2 != null) {
+      _re2 = _re2!.trimLeft();
       return _re2;
     }else{
       return null;
@@ -1455,7 +1457,11 @@ class _MyHomePageState extends State<MyHomePage> {
             initialValue: _result1(),
             maxLines: 5,
             keyboardType: TextInputType.multiline,
-            decoration: InputDecoration(border: OutlineInputBorder()),
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              fillColor: Colors.blue[50],
+              filled: true,
+            ),
             onChanged: (String value) {
               setState(() {
                 _re3 = value;
@@ -1471,7 +1477,11 @@ class _MyHomePageState extends State<MyHomePage> {
             initialValue: _result2(),
             maxLines: 5,
             keyboardType: TextInputType.multiline,
-            decoration: InputDecoration(border: OutlineInputBorder()),
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              fillColor: Colors.blue[50],
+              filled: true,
+            ),
             onChanged: (String value) {
               setState(() {
                 _re4 = value;
@@ -1488,6 +1498,17 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Text('入力'),
         onPressed: (){
           nameList = _re3!.split('\n');
+
+          if(_re4!.contains('*')){
+            _re4 = _re4!.replaceAll("*", "");
+          }else if(_re4!.contains('¥')) {
+            _re4 = _re4!.replaceAll("¥", "");
+            _re4 = _re4!.replaceAll("軽", "");
+          }else if(_re4!.contains('軽')){
+            _re4 = _re4!.replaceAll("軽", "");
+          }else{
+            _re4;
+          }
           amountList = _re4!.split('\n');
           Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
