@@ -118,7 +118,7 @@ class ListPage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.day.toString().toString() + '日'),
+                                    Text(now.year.toString() + '/' + now.month.toString() + '/' + now.day.toString()),
                                     Text('● 内訳'),
                                     Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
                                     Text('　' + '( ' + data['category1'].toString() + ' )'),
@@ -132,7 +132,7 @@ class ListPage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.day.toString().toString() + '日'),
+                                    Text(now.year.toString() + '/' + now.month.toString() + '/' + now.day.toString()),
                                     Text('● 内訳'),
                                     Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
                                     Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
@@ -147,7 +147,7 @@ class ListPage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.day.toString().toString() + '日'),
+                                    Text(now.year.toString() + '/' + now.month.toString() + '/' + now.day.toString()),
                                     Text('● 内訳'),
                                     Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
                                     Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
@@ -165,7 +165,7 @@ class ListPage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.day.toString().toString() + '日'),
+                                    Text(now.year.toString() + '/' + now.month.toString() + '/' + now.day.toString()),
                                     Text('● 内訳'),
                                     Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
                                     Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
@@ -186,7 +186,7 @@ class ListPage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.day.toString().toString() + '日'),
+                                    Text(now.year.toString() + '/' + now.month.toString() + '/' + now.day.toString()),
                                     Text('● 内訳'),
                                     Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
                                     Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
@@ -1497,19 +1497,42 @@ class _MyHomePageState extends State<MyHomePage> {
     return ElevatedButton(
         child: Text('入力'),
         onPressed: (){
-          nameList = _re3!.split('\n');
-
-          if(_re4!.contains('*')){
-            _re4 = _re4!.replaceAll("*", "");
-          }else if(_re4!.contains('¥')) {
-            _re4 = _re4!.replaceAll("¥", "");
-            _re4 = _re4!.replaceAll("軽", "");
-          }else if(_re4!.contains('軽')){
-            _re4 = _re4!.replaceAll("軽", "");
+          if(_re1 != null && _re3 == null){
+            nameList = _re1!.split('\n');
+          }else if(_re1 != null && _re3 != null){
+            nameList = _re3!.split('\n');
           }else{
-            _re4;
+            return null;
           }
-          amountList = _re4!.split('\n');
+
+          if(_re2 != null && _re4 == null){
+            if(_re2!.contains('*')){
+              _re2 = _re2!.replaceAll("*", "");
+            }else if(_re2!.contains('¥')) {
+              _re2 = _re2!.replaceAll("¥", "");
+              _re2 = _re2!.replaceAll("軽", "");
+            }else if(_re2!.contains('軽')){
+              _re2 = _re2!.replaceAll("軽", "");
+            }else{
+              _re2;
+            }
+            amountList = _re2!.split('\n');
+          }else if(_re2 != null && _re4 != null){
+            if(_re4!.contains('*')){
+              _re4 = _re4!.replaceAll("*", "");
+            }else if(_re4!.contains('¥')) {
+              _re4 = _re4!.replaceAll("¥", "");
+              _re4 = _re4!.replaceAll("軽", "");
+            }else if(_re4!.contains('軽')){
+              _re4 = _re4!.replaceAll("軽", "");
+            }else{
+              _re4;
+            }
+            amountList = _re4!.split('\n');
+          }else{
+            return null;
+          }
+
           Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
               return InputPage(nameList_re: List.of(nameList), amountList_re: List.of(amountList));
