@@ -49,7 +49,6 @@ class MyApp extends StatelessWidget {
 
 // 一覧画面用Widget
 class ListPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,36 +59,6 @@ class ListPage extends StatelessWidget {
         body: Center(
           child: Column(
             children:<Widget>[
-              Row(
-                children: <Widget>[
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Text('設定額：',style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-                        SizedBox(
-                          width: 100,
-                          child: TextField(),
-                        ),
-                        Text('円',style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Text('今月：',style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-                        SizedBox(
-                          width: 100,
-                          child: TextField(),
-                        ),
-                        Text('円',style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-
               Expanded(
                 // StreamBuilder
                 // 非同期処理の結果を元にWidgetを作れる
@@ -1497,6 +1466,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return ElevatedButton(
         child: Text('入力'),
         onPressed: (){
+          //nameListに追加
           if(_re1 != null && _re3 == null){
             nameList = _re1!.split('\n');
           }else if(_re1 != null && _re3 != null){
@@ -1505,6 +1475,7 @@ class _MyHomePageState extends State<MyHomePage> {
             return null;
           }
 
+          //amountListに追加
           if(_re2 != null && _re4 == null){
             if(_re2!.contains('*')){
               _re2 = _re2!.replaceAll("*", "");
