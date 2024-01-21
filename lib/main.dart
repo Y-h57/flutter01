@@ -53,7 +53,7 @@ class ListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar:AppBar(
-          title: Text('一覧画面',style: TextStyle(fontSize: 30)),
+          title: Text('一覧',style: TextStyle(fontSize: 30)),
         ),
 
         body: Center(
@@ -361,7 +361,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title: Text('入力画面',style: TextStyle(fontSize: 20)),
+        title: Text('入力',style: TextStyle(fontSize: 20)),
       ),
 
       body: ListView(
@@ -492,7 +492,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 100,
                   child: ListTile(
-                    title: Text('支出①：'),
+                    title: Text('価格①：'),
                   ),
                 ),
                 SizedBox(
@@ -616,7 +616,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 100,
                   child: ListTile(
-                    title: Text('支出②：'),
+                    title: Text('価格②：'),
                   ),
                 ),
                 SizedBox(
@@ -740,7 +740,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 100,
                   child: ListTile(
-                    title: Text('支出③：'),
+                    title: Text('価格③：'),
                   ),
                 ),
                 SizedBox(
@@ -864,7 +864,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 100,
                   child: ListTile(
-                    title: Text('支出④：'),
+                    title: Text('価格④：'),
                   ),
                 ),
                 SizedBox(
@@ -988,7 +988,7 @@ class _InputPageState extends State<InputPage> {
                 SizedBox(
                   width: 100,
                   child: ListTile(
-                    title: Text('支出⑤：'),
+                    title: Text('価格⑤：'),
                   ),
                 ),
                 SizedBox(
@@ -1189,7 +1189,7 @@ class OCRPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MyHomePage(title: 'レシート読み取りOCR'),
+      body: MyHomePage(title: 'レシート読み取り'),
     );
   }
 }
@@ -1245,7 +1245,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('レシート読み取りOCR'),
+        title: Text('レシート読み取り'),
       ),
       body: Center(
         child: Padding(
