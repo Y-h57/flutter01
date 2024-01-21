@@ -69,10 +69,6 @@ class ListPage extends StatelessWidget {
                       .orderBy('date')
                       .snapshots(),
                   builder: (context, snapshot) {
-
-                    Map<String, dynamic> map = {'date': Timestamp.now()};
-                    DateTime now = map['date'].toDate();
-
                     // データが取得できた場合
                     if (snapshot.hasData) {
                       final List<DocumentSnapshot> documents = snapshot.data!.docs;
@@ -83,25 +79,25 @@ class ListPage extends StatelessWidget {
                             var doc = snapshot.data!.docs[index];
                             var data = doc.data() as Map;
                             if(data['name1'] != null && data['name2'] == null && data['name3'] == null && data['name4'] == null && data['name5'] == null){
+                              DateTime createdAt = data["date"].toDate();
                               return Card(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.year.toString() + '/' + now.month.toString() + '/' + now.day.toString()),
+                                    Text(createdAt.year.toString() + '/' + createdAt.month.toString() + '/' + createdAt.day.toString() + '　' + createdAt.hour.toString() + ':' + createdAt.minute.toString()),
                                     Text('● 内訳'),
                                     Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
                                     Text('　' + '( ' + data['category1'].toString() + ' )'),
                                   ],
                                 ),
                               );
-
-
                             }else if(data['name1'] != null && data['name2'] != null && data['name3'] == null && data['name4'] == null && data['name5'] == null){
+                              DateTime createdAt = data["date"].toDate();
                               return Card(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.year.toString() + '/' + now.month.toString() + '/' + now.day.toString()),
+                                    Text(createdAt.year.toString() + '/' + createdAt.month.toString() + '/' + createdAt.day.toString() + '　' + createdAt.hour.toString() + ':' + createdAt.minute.toString()),
                                     Text('● 内訳'),
                                     Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
                                     Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
@@ -112,11 +108,12 @@ class ListPage extends StatelessWidget {
                                 ),
                               );
                             }else if(data['name1'] != null && data['name2'] != null && data['name3'] != null && data['name4'] == null && data['name5'] == null){
+                              DateTime createdAt = data["date"].toDate();
                               return Card(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.year.toString() + '/' + now.month.toString() + '/' + now.day.toString()),
+                                    Text(createdAt.year.toString() + '/' + createdAt.month.toString() + '/' + createdAt.day.toString() + '　' + createdAt.hour.toString() + ':' + createdAt.minute.toString()),
                                     Text('● 内訳'),
                                     Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
                                     Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
@@ -130,11 +127,12 @@ class ListPage extends StatelessWidget {
                                 ),
                               );
                             }else if(data['name1'] != null && data['name2'] != null && data['name3'] != null && data['name4'] != null && data['name5'] == null){
+                              DateTime createdAt = data["date"].toDate();
                               return Card(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.year.toString() + '/' + now.month.toString() + '/' + now.day.toString()),
+                                    Text(createdAt.year.toString() + '/' + createdAt.month.toString() + '/' + createdAt.day.toString() + '　' + createdAt.hour.toString() + ':' + createdAt.minute.toString()),
                                     Text('● 内訳'),
                                     Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
                                     Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
@@ -151,11 +149,12 @@ class ListPage extends StatelessWidget {
                                 ),
                               );
                             }else{
+                              DateTime createdAt = data["date"].toDate();
                               return Card(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-                                    Text(now.year.toString() + '/' + now.month.toString() + '/' + now.day.toString()),
+                                    Text(createdAt.year.toString() + '/' + createdAt.month.toString() + '/' + createdAt.day.toString() + '　' + createdAt.hour.toString() + ':' + createdAt.minute.toString()),
                                     Text('● 内訳'),
                                     Text('・' + data['name1'].toString() + '　　　' + data['value1'].toString() + '円'),
                                     Text('　' + '( ' + data['category1'].toString() + ' )' + '\n'),
